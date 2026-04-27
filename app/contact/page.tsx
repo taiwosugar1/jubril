@@ -222,14 +222,37 @@ function ContactForm({ onClose }: { onClose?: () => void }) {
         message: '',
     });
     const [submitted, setSubmitted] = useState(false);
+    const [sending, setSending] = useState(false);
+    const [error, setError] = useState('');
+
+    async function handleSubmit() {
+        setSending(true);
+        setError('');
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    formType: 'contact',
+                    name: form.name,
+                    email: form.email,
+                    company: form.company,
+                    phone: form.phone,
+                    message: form.message,
+                }),
+            });
+            const data = await res.json();
+            if (!data.success) throw new Error(data.error);
+            setSubmitted(true);
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSending(false);
+        }
+    }
 
     const set = (k: keyof FormState) => (v: string) =>
         setForm((prev) => ({ ...prev, [k]: v }));
-
-    function handleSubmit() {
-        console.log('Contact message:', form);
-        setSubmitted(true);
-    }
 
     return (
         <section
@@ -297,20 +320,28 @@ function ContactForm({ onClose }: { onClose?: () => void }) {
                             </div>
 
                             {/* Submit — cream bg, turns navy on hover */}
-                            <button
-                                onClick={handleSubmit}
-                                className="
-                  w-full py-5
-                  bg-[#f5f0e8] text-[#060e1c]
-                  font-cormorant not-italic font-medium
-                  text-[11px] tracking-[0.3em] uppercase
-                  transition-all duration-[400ms]
-                  hover:bg-[#1c3a6e] hover:text-white
-                  active:scale-[0.99]
-                "
-                            >
-                                Send Message
-                            </button>
+                                <button
+                                    onClick={handleSubmit}
+                                    disabled={sending}
+                                    className="
+    w-full py-5
+    bg-[#f5f0e8] text-[#060e1c]
+    font-cormorant not-italic font-medium
+    text-[11px] tracking-[0.3em] uppercase
+    transition-all duration-[400ms]
+    hover:bg-[#1c3a6e] hover:text-white
+    active:scale-[0.99]
+    disabled:opacity-50 disabled:cursor-not-allowed
+  "
+                                >
+                                    {sending ? 'Sending…' : 'Send Message'}
+                                </button>
+
+                                {error && (
+                                    <p className="text-red-400 text-[11px] tracking-[0.1em] text-center mt-4">
+                                        {error}
+                                    </p>
+                                )}
                         </motion.div>
                     )}
                 </AnimatePresence>

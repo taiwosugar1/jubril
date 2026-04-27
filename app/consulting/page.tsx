@@ -293,16 +293,37 @@ function ConsultingForm({ onClose }: { onClose?: () => void }) {
         scope: '',
     });
     const [submitted, setSubmitted] = useState(false);
+    // Add at the top of ConsultingForm component:
+    const [sending, setSending] = useState(false);
+    const [error, setError] = useState('');
 
+    async function handleSubmit() {
+        setSending(true);
+        setError('');
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    formType: 'consulting',
+                    name: form.name,
+                    email: form.email,
+                    company: form.company,
+                    area: form.area,
+                    scope: form.scope,
+                }),
+            });
+            const data = await res.json();
+            if (!data.success) throw new Error(data.error);
+            setSubmitted(true);
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSending(false);
+        }
+    }
     const set = (k: keyof FormState) => (v: string) =>
         setForm((prev) => ({ ...prev, [k]: v }));
-
-    function handleSubmit() {
-        // wire to your API / email service here
-        console.log('Consulting inquiry:', form);
-        setSubmitted(true);
-    }
-
 
     return (
         <section
@@ -397,20 +418,29 @@ function ConsultingForm({ onClose }: { onClose?: () => void }) {
                             </div>
 
                             {/* Submit */}
-                            <button
-                                onClick={handleSubmit}
-                                className="
-                  w-full py-5
-                  bg-white text-[#060e1c]
-                  font-cormorant not-italic font-medium
-                  text-[11px] tracking-[0.3em] uppercase
-                  transition-all duration-400
-                  hover:bg-[#1c3a6e] hover:text-white
-                  active:scale-[0.99]
-                "
-                            >
-                                Initiate Consultation
-                            </button>
+                                <button
+                                    onClick={handleSubmit}
+                                    disabled={sending}
+                                    className="
+    w-full py-5
+    bg-white text-[#060e1c]
+    font-cormorant not-italic font-medium
+    text-[11px] tracking-[0.3em] uppercase
+    transition-all duration-400
+    hover:bg-[#1c3a6e] hover:text-white
+    active:scale-[0.99]
+    disabled:opacity-50 disabled:cursor-not-allowed
+  "
+                                >
+                                    {sending ? 'Sending…' : 'Initiate Consultation'}
+                                </button>
+
+                                {/* Error message */}
+                                {error && (
+                                    <p className="text-red-400 text-[11px] tracking-[0.1em] text-center mt-4">
+                                        {error}
+                                    </p>
+                                )}
                         </motion.div>
                     )}
                 </AnimatePresence>

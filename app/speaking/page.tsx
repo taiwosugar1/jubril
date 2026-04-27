@@ -13,14 +13,41 @@ export default function SpeakingInquiry() {
     const [formData, setFormData] = useState({
         name: '', email: '', company: '', interest: '', theme: ''
     });
+
     const [submitted, setSubmitted] = useState(false);
+    // Add alongside existing useState declarations:
+    const [sending, setSending] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleSubmit = async () => {
+        setSending(true);
+        setError('');
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    formType: 'speaking',
+                    name: formData.name,
+                    email: formData.email,
+                    company: formData.company,
+                    interest: formData.interest,
+                    theme: formData.theme,
+                }),
+            });
+            const data = await res.json();
+            if (!data.success) throw new Error(data.error);
+            setSubmitted(true);
+            setTimeout(() => { setShowForm(false); setSubmitted(false); }, 2500);
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSending(false);
+        }
+    };
+
     const heroRef = useRef(null);
     const heroInView = useInView(heroRef, { once: true });
-
-    const handleSubmit = () => {
-        setSubmitted(true);
-        setTimeout(() => { setShowForm(false); setSubmitted(false); }, 2500);
-    };
 
     return (
         <>
@@ -273,12 +300,19 @@ export default function SpeakingInquiry() {
                                         {/* Submit */}
                                         <div className="mt-3">
                                             <button
-                                                className="w-full py-[22px] bg-[rgba(248,245,240,0.96)] border-0 cursor-pointer text-[11px] tracking-[0.32em] uppercase text-[#0a0a0a] transition duration-300 hover:bg-white hover:-translate-y-px active:translate-y-0"
+                                                className="w-full py-[22px] bg-[rgba(248,245,240,0.96)] border-0 cursor-pointer text-[11px] tracking-[0.32em] uppercase text-[#0a0a0a] transition duration-300 hover:bg-white hover:-translate-y-px active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed"
                                                 style={garamond}
                                                 onClick={handleSubmit}
+                                                disabled={sending}
                                             >
-                                                Submit Booking Request
+                                                {sending ? 'Submitting…' : 'Submit Booking Request'}
                                             </button>
+
+                                            {error && (
+                                                <p style={{ color: '#f87171', fontSize: 12, textAlign: 'center', marginTop: 16 }}>
+                                                    {error}
+                                                </p>
+                                            )}
                                         </div>
                                     </motion.div>
                                 ) : (
