@@ -14,7 +14,7 @@ export default function MarqueeScroll() {
 
     return (
         <div>
-            <div className="head-scroll relative bg-white text-gray-900 py-2.5 z-30 overflow-hidden">
+            <div className="head-scroll relative bg-white text-[#001F3F] py-2.5 z-30 overflow-hidden">
                 <div className="flex animate-marquee whitespace-nowrap">
                     {/* First set */}
                     <div className="flex items-center shrink-0">
@@ -23,7 +23,7 @@ export default function MarqueeScroll() {
                                 <span className="text-lg uppercase font-bold px-2">
                                     {item.text}
                                 </span>
-                                <span className="text-black font-bold px-2">|</span>
+                                <span className="text-[#001F3F] font-bold px-2">|</span>
                             </React.Fragment>
                         ))}
                     </div>
@@ -34,7 +34,7 @@ export default function MarqueeScroll() {
                                 <span className="head-scroll text-sm font-semibold px-2">
                                     {item.text}
                                 </span>
-                                <span className="text-black font-bold px-2">|</span>
+                                <span className="text-[#001F3F] font-bold px-2">|</span>
                             </React.Fragment>
                         ))}
                     </div>

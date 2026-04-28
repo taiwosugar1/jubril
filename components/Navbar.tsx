@@ -23,6 +23,8 @@ const NAV_LINKS2 = [
     { label: 'Favorites', href: '#favourite' },
     { label: 'Mentors', href: '#mentors' },
     { label: 'Awards', href: '#recognition' },
+    { label: 'Brand Spokesperson', href: '/press' },
+
 ];
 
 const SCROLL_KEY = 'navbar_pending_scroll';
