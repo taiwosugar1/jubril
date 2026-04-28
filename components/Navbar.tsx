@@ -9,6 +9,7 @@ import { MdMenu } from 'react-icons/md';
 import Image from 'next/image';
 
 const NAV_LINKS = [
+    { label: 'CONTACT', href: '/contact' },
     { label: 'SPEAKING INQUIRIES', href: '/speaking' },
     { label: 'BRAND SPOKESPERSON', href: '/press' },
     { label: 'STRATEGIC CONSULTATION', href: '/consulting' },
@@ -23,8 +24,18 @@ const NAV_LINKS2 = [
     { label: 'Favorites', href: '#favourite' },
     { label: 'Mentors', href: '#mentors' },
     { label: 'Awards', href: '#recognition' },
-    { label: 'Brand Spokesperson', href: '/press' },
+];
 
+const NAV_LINKS3 = [
+    { label: 'Home', href: '/' },
+    { label: 'Contact', href: '/contact' },
+    { label: 'Speaking Inquries', href: '/speaking' },
+    { label: 'Brand Spokesperson', href: '/press' },
+    { label: 'Strategic Consultation', href: '/consulting' },
+    { label: 'Hybrid Group', href: '#hybrid' },
+    { label: 'Favorites', href: '#favourite' },
+    { label: 'Mentors', href: '#mentors' },
+    { label: 'Awards', href: '#recognition' },
 ];
 
 const SCROLL_KEY = 'navbar_pending_scroll';
@@ -172,13 +183,14 @@ export default function Navbar() {
                         {/* SCROLLABLE CONTENT */}
                         <div className="flex-1 border-t border-white/5 overflow-y-auto">
                             <div className="flex flex-col items-center px-4 pt-10 pb-10 gap-5 md:gap-7">
-                                {NAV_LINKS2.map((link, i) => (
+                                {NAV_LINKS3.map((link, i) => (
                                     <motion.div
                                         key={link.href}
                                         initial={{ opacity: 0, y: 24 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: 14 }}
                                         transition={{ delay: i * 0.06 + 0.08, duration: 0.5 }}
+                                        className=' block  md:hidden'
                                     >
                                         {/* button instead of Link so we control navigation */}
                                         <button onClick={() => handleNavClick(link.href)}>
@@ -188,7 +200,31 @@ export default function Navbar() {
                                                 leading-none tracking-[-0.01em]
                                                 text-white/60 hover:text-white
                                                 transition-colors duration-300
-                                                block text-center
+                                                 text-center
+                                            ">
+                                                {link.label}
+                                            </h3>
+                                        </button>
+                                    </motion.div>
+                                ))} 
+                                {NAV_LINKS2.map((link, i) => (
+                                    <motion.div
+                                        key={link.href}
+                                        initial={{ opacity: 0, y: 24 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 14 }}
+                                        transition={{ delay: i * 0.06 + 0.08, duration: 0.5 }}
+                                        className='hidden md:block'
+                                    >
+                                        {/* button instead of Link so we control navigation */}
+                                        <button onClick={() => handleNavClick(link.href)}>
+                                            <h3 className="
+                                                font-cormorant italic font-normal
+                                                text-[clamp(25px,3vw,54px)]
+                                                leading-none tracking-[-0.01em]
+                                                text-white/60 hover:text-white
+                                                transition-colors duration-300
+                                                text-center
                                             ">
                                                 {link.label}
                                             </h3>
