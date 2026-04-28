@@ -116,37 +116,37 @@ export default function HeroSection() {
                             <div className="absolute inset-0 flex items-center">
                                 {/* Text block */}
                                 <div className="
-                                    text-center md:text-start
-                                    relative z-10 flex flex-col
-                                    pl-6 sm:pl-10 md:pl-[7vw] lg:pl-[10vw]
-                                    w-full md:w-[52%] lg:w-[48%]
-                                    pb-[75vw] sm:pb-[20vw] md:pb-0
-                                ">
+    text-center md:text-start
+    relative z-10 flex flex-col
+    pl-6 sm:pl-10 md:pl-[7vw] lg:pl-[10vw]
+    w-full md:w-[52%] lg:w-[48%]
+    pb-[75vw] sm:pb-[20vw] md:pb-0
+">
                                     <motion.h1
-                                        initial={{ opacity: 0, x: -32 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: -32 }}
-                                        transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+                                        initial={{ opacity: 0, x: -120, scale: 1.25, filter: 'blur(10px)' }}
+                                        whileInView={{ opacity: 1, x: 0, scale: 1, filter: 'blur(0px)' }}
+                                        viewport={{ once: true, margin: '-80px' }}
+                                        transition={{ duration: 1.1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                                         className="font-cormorant italic font-normal text-[clamp(52px,18vw,110px)] leading-[0.92] text-white"
                                     >
                                         Jubril
                                     </motion.h1>
 
                                     <motion.h2
-                                        initial={{ opacity: 0, x: -32 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: -32 }}
-                                        transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                                        initial={{ opacity: 0, x: -140, scale: 1.3, filter: 'blur(12px)' }}
+                                        whileInView={{ opacity: 1, x: 0, scale: 1, filter: 'blur(0px)' }}
+                                        viewport={{ once: true, margin: '-80px' }}
+                                        transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                                         className="font-cormorant italic font-light text-[clamp(50px,17vw,110px)] leading-[1.05] text-white/[0.28]"
                                     >
                                         Arogundade.
                                     </motion.h2>
 
                                     <motion.div
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
-                                        transition={{ duration: 0.6, delay: 0.38 }}
+                                        initial={{ opacity: 0, x: -60, scale: 1.1 }}
+                                        whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                                         className="flex items-center gap-4 mt-5 md:mt-10"
                                     >
                                         <div className="w-8 h-px bg-white/35 flex-shrink-0" />
