@@ -71,15 +71,15 @@ function MentorCard({
                     {mentor.name}
                 </p>
 
-                <p className="font-serif font-bold uppercase tracking-[0.24em] text-[12px] md:text-[9px] text-[#1c2e4a]/45 mb-3">
+                <p className="font-serif font-bold uppercase tracking-[0.24em] text-[12px] md:text-[9px] text-[#000C1A] mb-3">
                     {mentor.role}
                 </p>
 
                 <div className="flex items-center mt-5 gap-6">
 
-                    <div className="md:h-25 h-40 w-[2px] bg-[#1c2e4a]/10" />
+                    <div className="md:h-25 h-40 w-[2px] bg-[#000C1A]" />
 
-                    <p className="font-serif italic text-lg md:text-sm  leading-relaxed text-[#1c2e4a]/50">
+                    <p className="font-serif italic text-lg md:text-sm  leading-relaxed text-[#000C1A]">
                         {mentor.quote}
                     </p>
                 </div>

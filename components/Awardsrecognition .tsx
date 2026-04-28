@@ -195,7 +195,7 @@ export default function AwardsRecognition() {
                     className="font-serif italic font-light
                      text-[clamp(15px,1.4vw,18px)]
                      leading-[1.72]
-                     text-[#1c2e4a]/50
+                     text-[#000C1A]
                      mt-[clamp(20px,3vh,32px)]"
                 >
                     A testament to a decade of relentless pursuit of excellence,
