@@ -273,14 +273,14 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute bottom-18 left-4 md:left-8 z-10"
+                    className="absolute bottom-18 left-4 md:left-25 z-10"
                 >
-                    <span className="text-[10px] uppercase tracking-[0.28em] text-white/85 bg-[#001F3F]/85 px-3 py-1.5">
+                    <span className="text-[9px] md:text-10px uppercase tracking-[0.28em] text-white/85 bg-[#001F3F]/85 px-2 md:px-3 py-1.5">
                         {car.brand}
                     </span>
-                    <p className="font-cormorant italic text-[clamp(32px,5vw,72px)] text-white m-0 mt-3">
+                    <h4 className="font-cormorant italic text-[clamp(25px,5vw,72px)] text-white">
                         {car.name}
-                    </p>
+                    </h4>
                 </motion.div>
             )}
 
@@ -289,7 +289,7 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.25 }}
-                    className="absolute bottom-42 md:bottom-18 right-4 md:right-8 z-10 text-right"
+                    className="absolute bottom-18 right-4 md:right-8 z-10 text-right"
                 >
                     {car.specs?.map((spec) => (
                         <p key={spec.label} className="mb-1 text-[10px] md:text[13px] text-white/40 uppercase">
