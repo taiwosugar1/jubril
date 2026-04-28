@@ -214,6 +214,11 @@ export default function HybridEcosystem() {
                             More than a collection of companies, this is a vertically integrated response to Africa&apos;s energy and mobility crisis.
                         </h4>
                     </FadeUp>
+                    <FadeUp delay={0.22} className="mt-[clamp(28px,4vh,48px)]">
+                        <h4 className="font-cormorant italic font-light text-[clamp(16px,1.4vw,18px)] leading-[1.72] text-white/60 m-0 mb-5">
+                            By bridging the gap between high-performance automotive engineering and sustainable power infrastructure, Jubril is architecting a self-sustaining loop that ensures the continent doesn't just consume the future, but builds it.
+                        </h4>
+                    </FadeUp>
                 </div>
 
                 {/* RIGHT (UNCHANGED MAPPING) */}
