@@ -27,7 +27,7 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
                 {items.map((src, i) => (
                     <div
                         key={i}
-                        className="relative flex-shrink-0 w-[380px] sm:w-[340px] h-[180px] sm:h-[210px] overflow-hidden"
+                        className="relative flex-shrink-0 w-[330px] sm:w-[340px] h-[180px] sm:h-[210px] overflow-hidden"
                     >
                         <Image
                             src={src}
@@ -70,11 +70,11 @@ export default function StrategicAlliances() {
             <style>{`
         @keyframes marquee {
           0%   { transform: translateX(0); }
-          100% { transform: translateX(33.333%); }
+          100% { transform: translateX(-33.333%); }
         }
         @keyframes marquee-reverse {
-          0%   { transform: translateX(33.333%); }
-          100% { transform: translateX(0); }
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
         .animate-marquee-reverse { animation: marquee-reverse 62s linear infinite; }
       `}</style>
