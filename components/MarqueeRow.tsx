@@ -48,6 +48,7 @@ export default function MarqueeRow({
                 <span className="select-none shrink-0
                     md:text-[clamp(52px,8.5vw,140px)]
                     text-[clamp(52px,20vw,140px)]
+                    head-scroll
                     font-black tracking-[0.02em]
                     leading-[1.5] md:leading-[1.05]
                     text-white/5 pr-20"
@@ -56,6 +57,7 @@ export default function MarqueeRow({
                 </span>
 
                 <span className="select-none shrink-0
+                    head-scroll
                     md:text-[clamp(52px,8.5vw,140px)]
                     text-[clamp(52px,20vw,140px)]
                     font-black tracking-[0.02em]
