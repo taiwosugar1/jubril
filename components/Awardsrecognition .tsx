@@ -124,7 +124,7 @@ function AwardCard({
                       text-[clamp(18px,1.7vw,21px)]
                       leading-[1.4]
                       text-white/90
-                      mb-[clamp(16px,1.5vh,25px)]">
+                      mb-[clamp(16px,1.5vh,20px)]">
                     {award.title}
                 </p>
 
@@ -183,7 +183,7 @@ export default function AwardsRecognition() {
                     <h2 className="font-serif not-italic font-medium
                          text-[clamp(52px,9.5vw,132px)]
                          leading-[1.05]
-                         text-[#001F3F]">
+                         text-[#000C1A]">
                         Recognition.
                     </h2>
                 </motion.div>
@@ -205,7 +205,7 @@ export default function AwardsRecognition() {
             </div>
 
             {/* Grid */}
-            <div className="max-w-[1280px] mx-auto">
+            <div className="max-w-[1280px] mx-auto  xl:px-10">
                 <div className="grid gap-[clamp(8px,1vw,14px)]
                         grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     {AWARDS.slice(0, 6).map((award, i) => (

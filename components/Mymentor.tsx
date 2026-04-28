@@ -101,22 +101,23 @@ export default function MyMentors() {
         >
             {/* Ghost text */}
             <div className="absolute inset-x-0 top-0 flex justify-center pt-[clamp(32px,5vh,56px)] pointer-events-none overflow-hidden whitespace-nowrap z-0">
-                {[-1, 0, 1].map((offset) => (
+
                     <span
-                        key={offset}
-                        className={`font-serif italic text-[clamp(72px,13vw,192px)] text-[#1c2e4a]/5 select-none ${offset === 0
-                            ? 'relative'
-                            : 'absolute ' + (offset === -1 ? 'left-[-100%]' : 'left-[100%]')
-                            }`}
+                    className={`font-[Cormorant_Garamond] italic text-[clamp(72px,13vw,192px)] text-[#1c2e4a]/5 select-none`}
                     >
                         My Mentors.
                     </span>
-                ))}
+                <span
+                    className={`font-[Cormorant_Garamond] italic text-[clamp(72px,13vw,192px)] text-[#1c2e4a]/5 select-none`}
+                >
+                    My Mentors.
+                </span>
+
             </div>
 
             {/* Header */}
             <div className="relative z-10 text-center mb-[clamp(48px,7vh,80px)]">
-                <p className='text-[11px] uppercase text-gray-500 font-semibold mb-8 tracking-[0.25em]'>
+                <p className='font-[Montserrat] text-[11px] uppercase text-gray-500 mb-8 tracking-[0.25em]'>
                     the architects of my vision
                 </p>
                 <motion.h2

@@ -15,7 +15,7 @@ const inter = Inter({
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["900"],
+  weight: ["500", "900"],
   variable: "--scrolling",
   display: "swap",
 });
@@ -56,15 +56,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
   }) {
-  if (IS_DEV_MODE) {
-    return (
-      <html lang="en">
-        <body>
-          <DevModePage />
-        </body>
-      </html>
-    );
-  }
+  // if (IS_DEV_MODE) {
+  //   return (
+  //     <html lang="en">
+  //       <body>
+  //         <DevModePage />
+  //       </body>
+  //     </html>
+  //   );
+  // }
 
   return (
     <html

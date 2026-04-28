@@ -7,7 +7,7 @@ const OriginSection = () => {
     const [showValues, setShowValues] = useState(false);
 
     return (
-        <section className="w-full min-h-screen bg-black text-[[#F5F2ED]] px-6 py-20 md:px-20 md:py-32 flex flex-col justify-center relative overflow-hidden">
+        <section className="w-full min-h-screen bg-black text-[[#F5F2ED]] px-6 py-20 md:px-20 md:py-25 flex flex-col justify-center relative overflow-hidden">
 
             <div className="absolute inset-0 opacity-5 pointer-events-none bg-color"></div>
 
@@ -15,9 +15,11 @@ const OriginSection = () => {
 
                 {/* LEFT COLUMN — untouched */}
                 <div className="flex flex-col md:max-w-[50%] justify-start">
-                    <h3 className="head-scroll text-xs md:text-sm uppercase tracking-[0.3em] text-zinc-400 font-sans mb-6">
+                    <p
+                        className="font-[Montserrat]  text-[11px] tracking-[0.36em] uppercase text-white/36 mb-5 md:mb-10"
+                    >
                         The Origin
-                    </h3>
+                    </p>
 
                     <h1
                         style={{ letterSpacing: '0.01rem' }}

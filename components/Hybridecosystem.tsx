@@ -75,7 +75,7 @@ function CompanyRow({
         onOpen: (company: (typeof COMPANIES)[number]) => void;
 }) {
     const ref = useRef<HTMLDivElement>(null);
-    const inView = useInView(ref, { once: true, margin: '-6%' });
+    const inView = useInView(ref, { once: false, margin: '-6%' });
 
     const handleClick = () => {
         // ONLY CHANGE: conditional behavior
@@ -91,23 +91,27 @@ function CompanyRow({
             ref={ref}
             onClick={handleClick}
             initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-            transition={{ duration: 0.85, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{
+                duration: 0.6,
+                delay: index * 0.1, // stagger effect
+                ease: [0.22, 1, 0.36, 1],
+            }}
             whileHover={{ x: 5 }}
             className="group block no-underline py-5 border-b border-white/[0.07] last:border-b-0 cursor-pointer"
         >
             <div className="flex items-start justify-between gap-6">
                 <div className="flex-1 min-w-0">
-                    <h3 className="font-cormorant italic font-normal text-[clamp(28px,3.8vw,50px)] leading-none tracking-[-0.01em] text-white/82 m-0 mb-2.5 transition-colors duration-300 group-hover:text-white">
+                    <h3 className="font-cormorant italic font-normal text-[clamp(28px,3.8vw,50px)] leading-none tracking-[-0.01em] text-white m-0 mb-2.5 transition-colors duration-300 group-hover:text-white">
                         {company.name}
                     </h3>
 
-                    <h4 className="font-cormorant font-light text-lg md:text-sm tracking-[0.01em] text-white/60 m-0 mb-4 leading-relaxed">
+                    <h4 className="font-cormorant font-light text-lg md:text-sm tracking-[0.01em] text-white/80 m-0 mb-4 leading-relaxed">
                         {company.tagline}
                     </h4>
                 </div>
 
-                <div className="flex-shrink-0 mt-1 text-white/25 transition-all duration-300 group-hover:text-white/70 group-hover:translate-x-1 group-hover:-translate-y-0.5">
+                <div className="flex-shrink-0 mt-1 text-white/70 transition-all duration-300 group-hover:text-white/70 group-hover:translate-x-1 group-hover:-translate-y-0.5">
                     <FiArrowRight size={20} />
                 </div>
             </div>
@@ -169,7 +173,7 @@ export default function HybridEcosystem() {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full bg-black overflow-hidden"
+            className="relative w-full mb-8 md:mb-30 bg-black overflow-hidden"
         >
             {/* Modal */}
             <CompanyModal
@@ -190,12 +194,12 @@ export default function HybridEcosystem() {
                 }}
             />
 
-            <div className="relative w-full grid grid-cols-1 lg:grid-cols-2 gap-0 py-[clamp(72px,11vh,120px)]">
+            <div className="relative w-full grid grid-cols-1 lg:grid-cols-2 gap-0 lg:px-10 py-[clamp(72px,11vh,120px)]">
 
                 {/* LEFT (UNCHANGED UI) */}
                 <div className="px-[clamp(24px,6vw,80px)] lg:border-r border-white/[0.07] pb-16 lg:pb-0">
                     <FadeUp delay={0}>
-                        <p className="font-cormorant font-normal text-[10px] tracking-[0.36em] uppercase text-white/60 mb-8">
+                        <p className="font-[Montserrat] font-normal text-[10px] tracking-[0.36em] uppercase text-white/60 mb-8">
                             The Footprint
                         </p>
                     </FadeUp>
@@ -209,14 +213,14 @@ export default function HybridEcosystem() {
                         </h2>
                     </FadeUp>
 
-                    <FadeUp delay={0.22} className="mt-[clamp(28px,4vh,48px)]">
-                        <h4 className="font-cormorant italic font-light text-[clamp(16px,1.4vw,18px)] leading-[1.72] text-white/60 m-0 mb-5">
+                    <FadeUp delay={0.22} className="mt-[clamp(45px,5vh,50px)]">
+                        <h4 className="font-cormorant italic font-light text-[clamp(16px,1.4vw,18px)] leading-[1.72] text-white m-0 mb-5">
                             More than a collection of companies, this is a vertically integrated response to Africa&apos;s energy and mobility crisis.
                         </h4>
                     </FadeUp>
                     <FadeUp delay={0.22} className="mt-[clamp(28px,4vh,48px)]">
-                        <h4 className="font-cormorant italic font-light text-[clamp(16px,1.4vw,18px)] leading-[1.72] text-white/60 m-0 mb-5">
-                            By bridging the gap between high-performance automotive engineering and sustainable power infrastructure, Jubril is architecting a self-sustaining loop that ensures the continent doesn't just consume the future, but builds it.
+                        <h4 className="font-cormorant italic font-light text-[clamp(16px,1.4vw,18px)] leading-[1.72] text-white m-0 mb-5">
+                            By bridging the gap between high-performance automotive engineering and sustainable power infrastructure, Jubril is architecting a self-sustaining loop that ensures the continent doesn&apos;t just consume the future, but builds it.
                         </h4>
                     </FadeUp>
                 </div>

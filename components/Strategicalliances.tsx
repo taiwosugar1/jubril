@@ -34,7 +34,7 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
                             alt="Gallery"
                             fill
                             sizes="340px"
-                            className="object-cover grayscale opacity-20 transition-all duration-700"
+                            className="object-cover grayscale opacity-30 transition-all duration-700"
                         />
                     </div>
                 ))}
@@ -99,7 +99,7 @@ export default function StrategicAlliances() {
                     variants={fadeIn}
                     initial="hidden"
                     animate={inView ? 'visible' : 'hidden'}
-                    className="text-center mb-[clamp(20px,3vh,36px)] text-[clamp(11px,1vw,12px)] tracking-[0.38em] uppercase text-white/60 font-[Cormorant_Garamond,Georgia,serif]"
+                    className="text-center mb-[clamp(20px,3vh,36px)] text-[clamp(11px,1vw,12px)] tracking-[0.38em] uppercase text-white/60 font-[Montserrat]"
                 >
                     The Network
                 </motion.p>
@@ -121,7 +121,7 @@ export default function StrategicAlliances() {
                         variants={fadeUp}
                         initial="hidden"
                         animate={inView ? 'visible' : 'hidden'}
-                        className="font-[Cormorant_Garamond,Georgia,serif] not-italic font-light text-[clamp(56px,11vw,152px)] leading-[1.05] text-white/20 tracking-[-0.01em]"
+                        className="font-[Cormorant_Garamond,Georgia,serif] not-italic font-light text-[clamp(56px,11vw,152px)] leading-[1.05] text-white/30 tracking-[-0.01em]"
                     >
                         Alliances.
                     </motion.h2>
@@ -135,7 +135,7 @@ export default function StrategicAlliances() {
                     animate={inView ? 'visible' : 'hidden'}
                     className="text-center max-w-[680px] mb-[clamp(56px,8vh,96px)]"
                 >
-                    <p className="text-[#ffffff80] m-0 md:text-xl text-lg font-semibold italic leading-[1.7] font-[Cormorant_Garamond,Georgia,serif]">
+                    <p className="text-[#ffff] m-0 md:text-xl text-lg font-semibold italic leading-[1.7] font-[Cormorant_Garamond,Georgia,serif]">
                         Aligning with global automotive pioneers to redefine the standards of excellence
                         and sustainability across the continent.
                     </p>

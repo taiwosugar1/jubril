@@ -122,8 +122,8 @@ export default function LegacySection() {
                 bg-[#0E2244]
                 flex flex-col justify-start
                 px-6 sm:px-10
-                pt-30 pb-16
-                lg:pt-24 lg:pb-24 lg:px-10
+                pt-30 pb-16 my-10 md:my-30
+                lg:pt-24 lg:pb-24 lg:px-20
             ">
                 {/* Eyebrow */}
                 <motion.p
@@ -131,7 +131,7 @@ export default function LegacySection() {
                     variants={fadeUp}
                     initial="hidden"
                     animate={isInView ? 'visible' : 'hidden'}
-                    className="font-[Cormorant_Garamond] text-[11px] tracking-[0.3em] uppercase text-white/45 mb-6"
+                    className="font-normal text-[11px] tracking-[0.3em] uppercase text-white/45 mb-6"
                 >
                     The Legacy
                 </motion.p>
@@ -163,7 +163,7 @@ export default function LegacySection() {
                     animate={isInView ? 'visible' : 'hidden'}
                     className="border-l-2 border-white/20 pl-5 mb-8 lg:mb-10"
                 >
-                    <p className="font-[Cormorant_Garamond] italic text-[clamp(15px,4vw,22px)] lg:text-[clamp(16px,1.9vw,22px)] text-white/75 leading-[1.7]">
+                    <p className="font-[Cormorant_Garamond] italic text-[clamp(15px,4vw,22px)] lg:text-[clamp(16px,1.9vw,22px)] text-white leading-[1.7]">
                         A dream born in Lagos, led to the building of a legacy.
                     </p>
                 </motion.blockquote>
@@ -180,7 +180,7 @@ export default function LegacySection() {
                         variants={fadeUp}
                         initial="hidden"
                         animate={isInView ? 'visible' : 'hidden'}
-                        className="font-[Cormorant_Garamond] text-lg text-white/60 leading-[1.8] mb-5 lg:mb-6"
+                        className="font-[Inter] text-lg text-white leading-[1.8] mb-5 lg:mb-6"
                     >
                         {text}
                     </motion.p>

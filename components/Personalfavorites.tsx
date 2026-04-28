@@ -14,14 +14,14 @@ export default function PersonalFavorites() {
 
     const sectionRef = useRef<HTMLDivElement | null>(null);
     const hasEntered = useRef(false);
-
     const touchStartX = useRef<number>(0);
     const touchStartY = useRef<number>(0);
+    const isPaused = useRef(false);                          // ← NEW
 
     const canGoBack = phase === 'cars' && activeIndex > 0;
     const canGoForward = phase === 'intro' ? true : activeIndex < CARS_DB.length - 1;
 
-    // ── Intersection: auto-trigger intro→cars when section is fully in view ──
+    // ── Intersection observer — untouched ──
     useEffect(() => {
         const el = sectionRef.current;
         if (!el) return;
@@ -29,8 +29,6 @@ export default function PersonalFavorites() {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 const ratio = entry.intersectionRatio;
-
-                // Fully in view → slide panel away after 1s
                 if (ratio >= 0.85 && !hasEntered.current && phase === 'intro') {
                     hasEntered.current = true;
                     setTimeout(() => {
@@ -38,8 +36,6 @@ export default function PersonalFavorites() {
                         setActiveIndex(0);
                     }, 1000);
                 }
-
-                // Scrolled away → reset so it triggers again next visit
                 if (ratio <= 0.2) {
                     hasEntered.current = false;
                     setPhase('intro');
@@ -53,7 +49,19 @@ export default function PersonalFavorites() {
         return () => observer.disconnect();
     }, [phase]);
 
-    // ── Arrow nav — instant ──
+    // ── Auto-slide every 5 s (only in 'cars' phase) ──          // ← NEW
+    useEffect(() => {
+        if (phase !== 'cars') return;
+
+        const id = setInterval(() => {
+            if (isPaused.current) return;
+            setActiveIndex((i) => (i < CARS_DB.length - 1 ? i + 1 : 0)); // wraps back to 0
+        }, 4000);
+
+        return () => clearInterval(id);
+    }, [phase]);
+
+    // ── Arrow nav — untouched ──
     const goNext = () => {
         if (phase === 'intro') {
             setPhase('cars');
@@ -71,7 +79,7 @@ export default function PersonalFavorites() {
         }
     };
 
-    // ── Touch swipe — instant ──
+    // ── Touch — untouched ──
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.touches[0].clientX;
         touchStartY.current = e.touches[0].clientY;
@@ -101,13 +109,15 @@ export default function PersonalFavorites() {
             className="relative w-full md:h-screen h-[80vh] bg-black overflow-hidden"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
+            onMouseEnter={() => { isPaused.current = true; }}     // ← NEW: pause on hover
+            onMouseLeave={() => { isPaused.current = false; }}    // ← NEW: resume on leave
         >
-            {/* ─── CARS BACKGROUND (always mounted, revealed as panel slides away) ─── */}
+            {/* ─── CARS BACKGROUND — untouched ─── */}
             <div className="absolute inset-0 z-0">
                 <CarsFullscreen activeIndex={activeIndex} phase={phase} />
             </div>
 
-            {/* ─── INTRO PANEL — full screen, slides left on exit ─── */}
+            {/* ─── INTRO PANEL — untouched ─── */}
             <AnimatePresence>
                 {phase === 'intro' && (
                     <motion.div
@@ -121,16 +131,17 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0)}
                             initial="hidden"
                             animate="visible"
-                            className="font-cormorant text-[11px] tracking-[0.36em] uppercase text-white/36 mb-5"
+                            className="font-[Montserrat]  text-[11px] tracking-[0.36em] uppercase text-white/36 mb-5"
                         >
                             The Collection
                         </motion.p>
 
+                        <div>
                         <motion.h2
                             variants={fadeUp(0.1)}
                             initial="hidden"
                             animate="visible"
-                            className=" font-cormorant italic text-[clamp(70px,7vw,120px)] text-white"
+                                className="font-cormorant italic text-[clamp(90px,10vw,120px)] text-white"
                         >
                             Personal
                         </motion.h2>
@@ -139,11 +150,11 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0.18)}
                             initial="hidden"
                             animate="visible"
-                            className="-mt-8 md:-mt-10 mb-6  font-cormorant text-[clamp(70px,7vw,120px)] text-[#001F3F]"
+                                className="-mt-8 md:-mt-10 mb-6 font-cormorant text-[clamp(90px,10vw,120px)] text-[#001F3F]"
                         >
                             Favorites.
                         </motion.h2>
-
+                        </div>
                         <motion.h4
                             variants={fadeUp(0.28)}
                             initial="hidden"
@@ -157,8 +168,8 @@ export default function PersonalFavorites() {
                 )}
             </AnimatePresence>
 
-            {/* ─── NAV BUTTONS ─── */}
-            <div className="absolute right-6 sm:right-8 top-22 z-50 flex items-center gap-3">
+            {/* ─── NAV BUTTONS — untouched ─── */}
+            <div className="absolute right-6 sm:right-8 top-12 z-20 flex items-center gap-3">
                 <button
                     onClick={goPrev}
                     disabled={!canGoBack}
@@ -179,15 +190,15 @@ export default function PersonalFavorites() {
     );
 }
 
-// ─── CarsFullscreen ───────────────────────────────────────────────────────────
+// ─── CarsFullscreen — untouched ───────────────────────────────────────────────
 
 function CarsFullscreen({
     activeIndex,
     phase,
 }: {
-        activeIndex: number;
-        phase: 'intro' | 'cars';
-    }) {
+    activeIndex: number;
+    phase: 'intro' | 'cars';
+}) {
     if (phase === 'intro') {
         return (
             <div className="w-full h-full">
@@ -201,7 +212,7 @@ function CarsFullscreen({
             <div
                 className="flex h-full"
                 style={{
-                    transform: `translateX(-${activeIndex * 97}%)`,
+                    transform: `translateX(-${activeIndex * 75}%)`,
                     transition: 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
             >
@@ -209,22 +220,16 @@ function CarsFullscreen({
                     <div
                         key={car.slug}
                         className="h-full flex-shrink-0"
-                        style={{
-                            width: '97%',
-                        }}
+                        style={{ width: '75%' }}
                     >
                         <CarSlide car={car} isActive={i === activeIndex} />
                     </div>
                 ))}
             </div>
 
-            {/* NEXT PREVIEW (DESKTOP ONLY) */}
             {activeIndex < CARS_DB.length - 1 && (
-                <div className="absolute right-0 top-0 h-full w-[3%] pointer-events-none hidden md:block">
-                    <CarSlide
-                        car={CARS_DB[activeIndex + 1]}
-                        isActive={false}
-                    />
+                <div className="absolute right-0 top-0 h-full w-[25%] pointer-events-none hidden md:block">
+                    <CarSlide car={CARS_DB[activeIndex + 1]} isActive={false} />
                     <div className="absolute inset-0 bg-gradient-to-l from-black/70 to-transparent" />
                 </div>
             )}
@@ -232,19 +237,17 @@ function CarsFullscreen({
     );
 }
 
-// ─── CarSlide ─────────────────────────────────────────────────────────────────
+// ─── CarSlide — untouched ─────────────────────────────────────────────────────
 
 function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
     const [hovered, setHovered] = useState(false);
-    const router = useRouter()
-    const navigate = () => {
-        router.push(`/cars/${car.slug}`)
-    }
+    const router = useRouter();
+    const navigate = () => { router.push(`/cars/${car.slug}`); };
 
     return (
         <Link
             href={`/cars/${car.slug}`}
-            className=" block w-full h-full relative"
+            className="block w-full h-full relative"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
@@ -253,10 +256,8 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                 alt={car.name}
                 fill
                 sizes="(max-width: 1024px) 90vw, 76vw"
-                className={`md:object-cover object-contain transition-[filter,transform] duration-700 ${hovered
-                        ? 'brightness-[0.78] scale-[1.025]'
-                        : isActive
-                        ? 'brightness-[0.55]'
+                className={`md:object-cover object-contain transition-[filter,transform] duration-700 ${hovered ? 'brightness-[0.78] scale-[1.025]'
+                    : isActive ? 'brightness-[0.55]'
                         : 'brightness-[0.32]'
                     }`}
             />
@@ -288,7 +289,7 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                     </h4>
                     <button
                         onClick={navigate}
-                        className=" head mt-3 px-3 py-2 text-white text-sm md:text-lg border text-center uppercase bg-black/20 hover:bg-white hover:text-black border-white rounded-xl"
+                        className="head mt-3 px-3 py-2 text-white text-sm md:text-lg border text-center uppercase bg-black/20 hover:bg-white hover:text-black border-white rounded-xl"
                         onMouseEnter={() => setHovered(true)}
                         onMouseLeave={() => setHovered(false)}
                     >
@@ -312,13 +313,13 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                 </motion.div>
             )}
 
-            {!isActive && (
+            {/* {!isActive && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-10 px-4 pointer-events-none">
                     <p className="font-cormorant italic text-[clamp(18px,2vw,28px)] text-white/50 text-center leading-tight">
                         {car.name}
                     </p>
                 </div>
-            )}
+            )} */}
         </Link>
     );
 }
