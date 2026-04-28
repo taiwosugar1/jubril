@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 export default function MarqueeRow({
     word,
     dir,
@@ -11,61 +9,101 @@ export default function MarqueeRow({
     dir: 'left' | 'right';
     duration: number;
 }) {
-    const [isMobile, setIsMobile] = useState(false);
+    const repeated = Array(14).fill(word);
 
-    useEffect(() => {
-        const check = () => setIsMobile(window.innerWidth < 768);
-        check();
-        window.addEventListener('resize', check);
-        return () => window.removeEventListener('resize', check);
-    }, []);
-
-    // 🔥 Speed adjustment
-    const adjustedDuration = isMobile ? duration * 0.15 : duration;
-    // (lower = faster)
-
-    const repeated = Array(8).fill(word).join('          ');
+    const animationName =
+        dir === 'left' ? 'marquee-left' : 'marquee-right';
 
     return (
         <div className="overflow-hidden w-full leading-none">
             <style>{`
                 @keyframes marquee-left {
-                    from { transform: translateX(0); }
-                    to   { transform: translateX(-50%); }
+                    from { transform: translate3d(0,0,0); }
+                    to { transform: translate3d(-50%,0,0); }
                 }
+
                 @keyframes marquee-right {
-                    from { transform: translateX(-50%); }
-                    to   { transform: translateX(0); }
+                    from { transform: translate3d(-50%,0,0); }
+                    to { transform: translate3d(0,0,0); }
                 }
+
+                .marquee {
+    animation: var(--anim) var(--speed) linear infinite;
+    will-change: transform;
+}
+
+/* 📱 mobile (slowest) */
+@media (max-width: 768px) {
+    .marquee {
+        animation-duration: calc(var(--speed) * 4.5);
+    }
+}
+
+/* 💻 small laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .marquee {
+        animation-duration: calc(var(--speed) * 5.5);
+    }
+}
+
+/* 🖥️ large screens (lg) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .marquee {
+        animation-duration: calc(var(--speed) * 4.3);
+    }
+}
+
+/* 🖥️ xl screens */
+@media (min-width: 1441px) {
+    .marquee {
+        animation-duration: calc(var(--speed) * 4.0);
+    }
+}
             `}</style>
 
             <div
-                className="flex whitespace-nowrap will-change-transform"
+                className="flex w-max whitespace-nowrap marquee"
                 style={{
-                    animation: `marquee-${dir} ${adjustedDuration}s linear infinite`,
+                    ['--anim' as any]: animationName,
+                    ['--speed' as any]: `${duration}s`,
                 }}
             >
-                <span className="select-none shrink-0
-                    md:text-[clamp(52px,8.5vw,140px)]
-                    text-[clamp(52px,20vw,140px)]
-                    head-scroll
-                    font-black tracking-[0.02em]
-                    leading-[1.5] md:leading-[1.05]
-                    text-white/5 pr-20"
-                >
-                    {repeated}
-                </span>
+                {/* first set */}
+                <div className="flex shrink-0">
+                    {repeated.map((w, i) => (
+                        <span
+                            key={i}
+                            className="select-none pr-20
+                                md:text-[clamp(52px,8.5vw,140px)]
+                                text-[clamp(52px,20vw,140px)]
+                                font-black tracking-[0.02em]
+                                leading-[1.25]
+                                md:leading-[1.10]
+                                head-scroll
+                                text-white/5"
+                        >
+                            {w}
+                        </span>
+                    ))}
+                </div>
 
-                <span className="select-none shrink-0
-                    head-scroll
-                    md:text-[clamp(52px,8.5vw,140px)]
-                    text-[clamp(52px,20vw,140px)]
-                    font-black tracking-[0.02em]
-                    leading-[1.5] md:leading-[1.05]
-                    text-white/5 pr-20"
-                >
-                    {repeated}
-                </span>
+                {/* duplicate set */}
+                <div className="flex shrink-0">
+                    {repeated.map((w, i) => (
+                        <span
+                            key={`dup-${i}`}
+                            className="select-none pr-24
+                                md:text-[clamp(52px,8.5vw,140px)]
+                                text-[clamp(52px,20vw,140px)]
+                                font-black tracking-[0.02em]
+                                head-scroll
+                                leading-[1.05]
+                                text-white/5"
+                        >
+                            {w}
+                        </span>
+                    ))}
+                </div>
             </div>
         </div>
     );
