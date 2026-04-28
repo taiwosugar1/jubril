@@ -70,10 +70,10 @@ export default function StrategicAlliances() {
             <style>{`
         @keyframes marquee {
           0%   { transform: translateX(0); }
-          100% { transform: translateX(-33.333%); }
+          100% { transform: translateX(33.333%); }
         }
         @keyframes marquee-reverse {
-          0%   { transform: translateX(-33.333%); }
+          0%   { transform: translateX(33.333%); }
           100% { transform: translateX(0); }
         }
         .animate-marquee-reverse { animation: marquee-reverse 62s linear infinite; }
