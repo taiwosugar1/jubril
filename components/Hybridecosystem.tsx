@@ -210,9 +210,9 @@ export default function HybridEcosystem() {
                     </FadeUp>
 
                     <FadeUp delay={0.22} className="mt-[clamp(28px,4vh,48px)]">
-                        <p className="font-cormorant italic font-light text-[clamp(16px,1.4vw,18px)] leading-[1.72] text-white/60 m-0 mb-5">
-                            More than a collection of companies...
-                        </p>
+                        <h4 className="font-cormorant italic font-light text-[clamp(16px,1.4vw,18px)] leading-[1.72] text-white/60 m-0 mb-5">
+                            More than a collection of companies, this is a vertically integrated response to Africa&apos;s energy and mobility crisis.
+                        </h4>
                     </FadeUp>
                 </div>
 
