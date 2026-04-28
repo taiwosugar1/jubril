@@ -292,7 +292,7 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                     className="absolute bottom-42 md:bottom-18 right-4 md:right-8 z-10 text-right"
                 >
                     {car.specs?.map((spec) => (
-                        <p key={spec.label} className="text-[10px] md:text[13px] text-white/40 uppercase">
+                        <p key={spec.label} className="mb-1 text-[10px] md:text[13px] text-white/40 uppercase">
                             {spec.value}
                         </p>
                     ))}
