@@ -200,7 +200,7 @@ function CarsFullscreen({
             <div
                 className="flex h-full"
                 style={{
-                    transform: `translateX(-${activeIndex * 90}%)`,
+                    transform: `translateX(-${activeIndex * 97}%)`,
                     transition: 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
             >
@@ -209,7 +209,7 @@ function CarsFullscreen({
                         key={car.slug}
                         className="h-full flex-shrink-0"
                         style={{
-                            width: '90%',
+                            width: '97%',
                         }}
                     >
                         <CarSlide car={car} isActive={i === activeIndex} />
@@ -219,7 +219,7 @@ function CarsFullscreen({
 
             {/* NEXT PREVIEW (DESKTOP ONLY) */}
             {activeIndex < CARS_DB.length - 1 && (
-                <div className="absolute right-0 top-0 h-full w-[10%] pointer-events-none hidden md:block">
+                <div className="absolute right-0 top-0 h-full w-[3%] pointer-events-none hidden md:block">
                     <CarSlide
                         car={CARS_DB[activeIndex + 1]}
                         isActive={false}
