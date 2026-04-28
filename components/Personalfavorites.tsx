@@ -35,7 +35,7 @@ export default function PersonalFavorites() {
                     setTimeout(() => {
                         setPhase('cars');
                         setActiveIndex(0);
-                    }, 500); //0.5 seconds
+                    }, 1000);
                 }
 
                 // Scrolled away → reset so it triggers again next visit
@@ -147,7 +147,7 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0.28)}
                             initial="hidden"
                             animate="visible"
-                            className="font-cormorant text-sm text-white/60 mt-5 max-w-[360px] hidden sm:block"
+                            className="font-cormorant text-sm text-white/40 mt-5 max-w-[360px] hidden sm:block"
                         >
                             A curated selection of high-performance vehicles that defines
                             Jubril&apos;s personal standard for automotive excellence and innovation
@@ -182,53 +182,49 @@ export default function PersonalFavorites() {
 
 function CarsFullscreen({
     activeIndex,
+    phase,
 }: {
         activeIndex: number;
+        phase: 'intro' | 'cars';
     }) {
+    if (phase === 'intro') {
+        return (
+            <div className="w-full h-full">
+                <CarSlide car={CARS_DB[0]} isActive={false} />
+            </div>
+        );
+    }
+
     return (
         <div className="relative w-full h-full overflow-hidden">
-            {/* SLIDER TRACK */}
             <div
-                className="
-                    flex h-full
-                    transition-transform duration-700 ease-[0.22,1,0.36,1]
-                "
+                className="flex h-full"
                 style={{
-                    transform: `translateX(-${activeIndex * 100}%)`,
+                    transform: `translateX(-${activeIndex * 90}%)`,
+                    transition: 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
             >
                 {CARS_DB.map((car, i) => (
                     <div
                         key={car.slug}
-                        className="
-                            h-full flex-shrink-0
-                            w-full md:w-[90%]
-                        "
+                        className="h-full flex-shrink-0"
+                        style={{
+                            width: '90%',
+                        }}
                     >
-                        <CarSlide
-                            car={car}
-                            isActive={i === activeIndex}
-                        />
+                        <CarSlide car={car} isActive={i === activeIndex} />
                     </div>
                 ))}
             </div>
 
             {/* NEXT PREVIEW (DESKTOP ONLY) */}
             {activeIndex < CARS_DB.length - 1 && (
-                <div className="
-                    absolute right-0 top-0 h-full w-[10%]
-                    hidden md:block
-                    pointer-events-none
-                ">
+                <div className="absolute right-0 top-0 h-full w-[10%] pointer-events-none hidden md:block">
                     <CarSlide
                         car={CARS_DB[activeIndex + 1]}
                         isActive={false}
                     />
-
-                    <div className="
-                        absolute inset-0
-                        bg-gradient-to-l from-black/70 to-transparent
-                    " />
+                    <div className="absolute inset-0 bg-gradient-to-l from-black/70 to-transparent" />
                 </div>
             )}
         </div>
@@ -293,10 +289,10 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.25 }}
-                    className="absolute bottom-42 md:bottom-18 right-4 md:right-12 z-10 text-right"
+                    className="absolute bottom-42 md:bottom-18 right-4 md:right-8 z-10 text-right"
                 >
                     {car.specs?.map((spec) => (
-                        <p key={spec.label} className="md:text-[13px] text-[10px] text-white/40 uppercase">
+                        <p key={spec.label} className="text-[10px] md:text[13px] text-white/40 uppercase">
                             {spec.value}
                         </p>
                     ))}

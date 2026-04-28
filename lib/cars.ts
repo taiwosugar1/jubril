@@ -70,9 +70,9 @@ export const CARS_DB: CarData[] = [
             { label: 'WIDESTAR STANCE', value: 'Carbon Widebody' },
         ],
         specs: [
-            { label: 'POWER', value: '800 HP' },
-            { label: 'TORQUE', value: '1000 Nm' },
-            { label: '0–100', value: '4.1s' },
+            { label: 'POWER', value: '800 HP / 1000 Nm' },
+            { label: 'TORQUE', value: '0-100 KM /H: 4.1s' },
+            { label: '0–100', value: 'Widestar Carbon Body' },
         ],
 
         craftItems: [
@@ -129,9 +129,9 @@ export const CARS_DB: CarData[] = [
         ],
 
         specs: [
-            { label: 'POWER', value: '700 HP' },
-            { label: 'TORQUE', value: '950 Nm' },
-            { label: 'ENGINE', value: 'V12 TT' },
+            { label: 'POWER', value: '700 HP / 950 NM' },
+            { label: 'TORQUE', value: 'V12 Twin-Turbo' },
+            { label: 'ENGINE', value: 'Masterpiece Interior' },
         ],
 
         craftItems: [
@@ -188,9 +188,9 @@ export const CARS_DB: CarData[] = [
         ],
 
         specs: [
-            { label: 'POWER', value: '261 HP' },
-            { label: 'TORQUE', value: '400 Nm' },
-            { label: 'DRIVE', value: 'AWD' },
+            { label: 'POWER', value: '261 HP / 400 Nm ' },
+            { label: 'TORQUE', value: '261 HP / 400 Nm ' },
+            { label: 'DRIVE', value: 'CDC Adaptive Suspension' },
         ],
 
         craftItems: [
@@ -247,9 +247,9 @@ export const CARS_DB: CarData[] = [
         ],
 
         specs: [
-            { label: 'POWER', value: '254 HP' },
-            { label: 'TORQUE', value: '390 Nm' },
-            { label: 'SEATS', value: '7-Seater' },
+            { label: 'POWER', value: '254 HP / 390 Nm' },
+            { label: 'TORQUE', value: '7-Speed DCT / AWD' },
+            { label: 'SEATS', value: 'Space Master Edition' },
         ],
 
         craftItems: [
