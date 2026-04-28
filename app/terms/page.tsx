@@ -22,7 +22,7 @@ These terms apply to all visitors, users, and any others who access or use the w
     {
         id: '02',
         title: 'Intellectual Property',
-        body: `All content on this website — including but not limited to text, photographs, graphics, videos, logos, and the overall design — is the exclusive intellectual property of Jubril Arogundade unless otherwise stated. This content is protected under applicable Nigerian and international copyright, trademark, and intellectual property laws.
+        body: `All content on this website — including but not limited to text, photographs, graphics, videos, logos, and the overall design, is the exclusive intellectual property of Jubril Arogundade unless otherwise stated. This content is protected under applicable Nigerian and international copyright, trademark, and intellectual property laws.
 
 You may not reproduce, distribute, republish, display, transmit, or exploit any content from this website — in whole or in part — without prior written permission. Brief quotations for editorial, commentary, or journalistic purposes are permitted provided appropriate attribution is given.`,
     },
@@ -36,9 +36,9 @@ You may not use this website or its content for any unlawful purpose, to imperso
     {
         id: '04',
         title: 'Accuracy of Information',
-        body: `While every effort is made to ensure that the information presented on this website is accurate and up to date, no warranties — express or implied — are made with respect to the completeness, accuracy, reliability, or suitability of the content for any particular purpose.
+        body: `While every effort is made to ensure that the information presented on this website is accurate and up to date, no warranties express or implied are made with respect to the completeness, accuracy, reliability, or suitability of the content for any particular purpose.
 
-Professional decisions — whether strategic, financial, legal, or otherwise — should not be made based solely on information provided on this website without independent verification and appropriate professional counsel.`,
+Professional decisions — whether strategic, financial, legal, or otherwise should not be made based solely on information provided on this website without independent verification and appropriate professional counsel.`,
     },
     {
         id: '05',
@@ -57,7 +57,7 @@ This includes, without limitation, damages for loss of profits, goodwill, data, 
     {
         id: '07',
         title: 'Speaking & Consulting Enquiries',
-        body: `Information presented on the speaking and consulting pages of this website is for introductory purposes only and does not constitute a binding offer or contractual agreement. All engagements — whether speaking, advisory, strategic consulting, or partnership — are subject to separate written agreements mutually executed by both parties.
+        body: `Information presented on the speaking and consulting pages of this website is for introductory purposes only and does not constitute a binding offer or contractual agreement. All engagements — whether speaking, advisory, strategic consulting, or partnership are subject to separate written agreements mutually executed by both parties.
 
 Submission of an enquiry form or email does not guarantee availability, create an obligation to respond, or establish a professional relationship until a formal agreement is in place.`,
     },
