@@ -317,7 +317,7 @@ export default function CarDetailPage({ car: carProp, slug }: CarDetailPageProps
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent z-[1]" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent z-[1]" />
 
-          <div className="absolute top-6 md:top-16 md:left-8 left-20 z-20">
+          <div className="absolute top-23  md:left-8 left-4 z-20">
             <BackButton />
           </div>
 
