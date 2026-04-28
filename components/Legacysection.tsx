@@ -47,6 +47,7 @@ export default function LegacySection() {
                     w-full lg:w-full
                     md:h-[60vw] h-[65vh] md:max-h-[66vh]
                     lg:aspect-[9/11] lg:h-auto lg:max-h-[82vh]
+                    mb-17 md:mb-0
                 ">
                     {/* Video container */}
                     <div className="absolute inset-0 overflow-hidden">
@@ -88,7 +89,7 @@ export default function LegacySection() {
                             w-[min(240px,72%)] lg:w-[min(280px,60%)]
 
                             /* Mobile: bottom-center, overlaps down into the blue section */
-                            -bottom-5 left-1/2 -translate-x-1/2 translate-y-1/2
+                            -bottom-14 left-1/2 -translate-x-1/2 translate-y-1/2
                             lg:translate-x-0 lg:translate-y-0
 
                             /* Desktop: original bottom-right overflow */

@@ -138,7 +138,7 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0.18)}
                             initial="hidden"
                             animate="visible"
-                            className="-mt-5 md:mt-0 mb-6  font-cormorant text-[clamp(70px,7vw,120px)] text-[#001F3F]"
+                            className="-mt-8 md:-mt-10 mb-6  font-cormorant text-[clamp(70px,7vw,120px)] text-[#001F3F]"
                         >
                             Favorites.
                         </motion.h2>
