@@ -147,7 +147,7 @@ export default function HeroSection() {
                                         whileInView={{ opacity: 1, x: 0, scale: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                                        className="flex items-center gap-4 mt-5 md:mt-10"
+                                        className="flex items-center justify-center md:justify-start gap-4 mt-5 md:mt-10"
                                     >
                                         <div className="w-8 h-px bg-white/35 flex-shrink-0" />
                                         <span className="font-cormorant font-light not-italic text-[12px] sm:text-[11px] tracking-[0.28em] uppercase text-white/45">

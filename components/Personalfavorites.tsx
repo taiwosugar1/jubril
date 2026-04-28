@@ -129,7 +129,7 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0.1)}
                             initial="hidden"
                             animate="visible"
-                            className="font-cormorant italic text-[clamp(70px,7vw,120px)] text-white"
+                            className=" font-cormorant italic text-[clamp(70px,7vw,120px)] text-white"
                         >
                             Personal
                         </motion.h2>
@@ -138,7 +138,7 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0.18)}
                             initial="hidden"
                             animate="visible"
-                            className="font-cormorant text-[clamp(70px,7vw,120px)] text-[#001F3F]"
+                            className="-mt-5 md:mt-0 mb-6  font-cormorant text-[clamp(70px,7vw,120px)] text-[#001F3F]"
                         >
                             Favorites.
                         </motion.h2>
@@ -147,7 +147,7 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0.28)}
                             initial="hidden"
                             animate="visible"
-                            className="font-cormorant text-sm text-white/70 mt-5 max-w-[360px] block"
+                            className="font-cormorant leading-6.5 text-sm text-white/70 mt-5 max-w-[360px] block"
                         >
                             A curated selection of high-performance vehicles that defines
                             Jubril&apos;s personal standard for automotive excellence and innovation
