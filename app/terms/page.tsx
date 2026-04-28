@@ -22,7 +22,7 @@ These terms apply to all visitors, users, and any others who access or use the w
     {
         id: '02',
         title: 'Intellectual Property',
-        body: `All content on this website — including but not limited to text, photographs, graphics, videos, logos, and the overall design, is the exclusive intellectual property of Jubril Arogundade unless otherwise stated. This content is protected under applicable Nigerian and international copyright, trademark, and intellectual property laws.
+        body: `All content on this website including but not limited to text, photographs, graphics, videos, logos, and the overall design, is the exclusive intellectual property of Jubril Arogundade unless otherwise stated. This content is protected under applicable Nigerian and international copyright, trademark, and intellectual property laws.
 
 You may not reproduce, distribute, republish, display, transmit, or exploit any content from this website — in whole or in part — without prior written permission. Brief quotations for editorial, commentary, or journalistic purposes are permitted provided appropriate attribution is given.`,
     },
@@ -38,7 +38,7 @@ You may not use this website or its content for any unlawful purpose, to imperso
         title: 'Accuracy of Information',
         body: `While every effort is made to ensure that the information presented on this website is accurate and up to date, no warranties express or implied are made with respect to the completeness, accuracy, reliability, or suitability of the content for any particular purpose.
 
-Professional decisions — whether strategic, financial, legal, or otherwise should not be made based solely on information provided on this website without independent verification and appropriate professional counsel.`,
+Professional decisions, whether strategic, financial, legal, or otherwise should not be made based solely on information provided on this website without independent verification and appropriate professional counsel.`,
     },
     {
         id: '05',
@@ -99,13 +99,13 @@ function SectionBlock({
                 </h3>
             </div>
             <div>
-                <h3 className="font-cormorant italic font-normal text-[clamp(20px,2.8vw,32px)] leading-tight tracking-[-0.01em] text-white/90 mb-5">
+                <h3 className="font-cormorant italic font-normal text-[clamp(23px,2.8vw,32px)] leading-tight tracking-[-0.01em] text-white/90 mb-5">
                     {section.title}
                 </h3>
                 {section.body.split('\n\n').map((para, i) => (
                     <h4
                         key={i}
-                        className="font-cormorant not-italic font-light text-base lg:text-[1.05rem] leading-[1.82] text-white/48 mb-4 last:mb-0"
+                        className="font-cormorant not-italic font-light text-lg leading-[1.82] text-white/48 mb-4 last:mb-0"
                     >
                         {para}
                     </h4>
