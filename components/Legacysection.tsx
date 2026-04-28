@@ -180,7 +180,7 @@ export default function LegacySection() {
                         variants={fadeUp}
                         initial="hidden"
                         animate={isInView ? 'visible' : 'hidden'}
-                        className="font-[Inter] text-lg text-white leading-[1.8] mb-5 lg:mb-6"
+                        className="font-[Inter] text-sm md:text-lg text-white leading-[1.8] mb-5 lg:mb-6"
                     >
                         {text}
                     </motion.p>
