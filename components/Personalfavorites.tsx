@@ -97,7 +97,7 @@ export default function PersonalFavorites() {
     return (
         <div
             ref={sectionRef}
-            className="relative w-full md:h-screen h-[70vh] bg-black overflow-hidden"
+            className="relative w-full md:h-screen h-[80vh] bg-black overflow-hidden"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
         >
