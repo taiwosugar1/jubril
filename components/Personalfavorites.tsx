@@ -20,7 +20,7 @@ export default function PersonalFavorites() {
     const canGoBack = phase === 'cars' && activeIndex > 0;
     const canGoForward = phase === 'intro' ? true : activeIndex < CARS_DB.length - 1;
 
-    // ── Intersection: auto-trigger intro→cars when section is in view ──
+    // ── Intersection: auto-trigger intro→cars when section is fully in view ──
     useEffect(() => {
         const el = sectionRef.current;
         if (!el) return;
@@ -29,7 +29,7 @@ export default function PersonalFavorites() {
             ([entry]) => {
                 const ratio = entry.intersectionRatio;
 
-                // User scrolled INTO section → dismiss intro after 1s
+                // Fully in view → slide panel away after 1s
                 if (ratio >= 0.85 && !hasEntered.current && phase === 'intro') {
                     hasEntered.current = true;
                     setTimeout(() => {
@@ -38,7 +38,7 @@ export default function PersonalFavorites() {
                     }, 1000);
                 }
 
-                // User scrolled AWAY → reset so it triggers again next visit
+                // Scrolled away → reset so it triggers again next visit
                 if (ratio <= 0.2) {
                     hasEntered.current = false;
                     setPhase('intro');
@@ -52,7 +52,7 @@ export default function PersonalFavorites() {
         return () => observer.disconnect();
     }, [phase]);
 
-    // ── Arrow nav — instant, no delay ──
+    // ── Arrow nav — instant ──
     const goNext = () => {
         if (phase === 'intro') {
             setPhase('cars');
@@ -70,7 +70,7 @@ export default function PersonalFavorites() {
         }
     };
 
-    // ── Touch swipe — instant, no delay ──
+    // ── Touch swipe — instant ──
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.touches[0].clientX;
         touchStartY.current = e.touches[0].clientY;
@@ -101,26 +101,20 @@ export default function PersonalFavorites() {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
         >
-            {/* ─── BACKGROUND ─── */}
+            {/* ─── CARS BACKGROUND (always mounted, revealed as panel slides away) ─── */}
             <div className="absolute inset-0 z-0">
                 <CarsFullscreen activeIndex={activeIndex} phase={phase} />
             </div>
 
-            {/* ─── INTRO PANEL ─── */}
+            {/* ─── INTRO PANEL — full screen, slides left on exit ─── */}
             <AnimatePresence>
                 {phase === 'intro' && (
                     <motion.div
                         key="intro-panel"
                         initial={{ x: 0, opacity: 1 }}
-                        exit={{ x: '-105%', opacity: 0 }}
+                        exit={{ x: '-100%', opacity: 1 }}
                         transition={{ duration: 1.6, ease: [0.76, 0, 0.24, 1] }}
-                        className="
-                            absolute inset-y-0 left-0 z-20
-                            w-[90vw] sm:w-[70vw] lg:w-[40vw]
-                            flex flex-col justify-center
-                            px-8 sm:px-12 lg:px-16
-                            bg-gradient-to-r from-black via-black/95 to-transparent
-                        "
+                        className="absolute inset-0 z-20 flex flex-col justify-center px-8 sm:px-12 lg:px-16 bg-black"
                     >
                         <motion.p
                             variants={fadeUp(0)}
@@ -135,7 +129,7 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0.1)}
                             initial="hidden"
                             animate="visible"
-                            className="font-cormorant italic text-[clamp(50px,7vw,120px)] text-white"
+                            className="font-cormorant italic text-[clamp(70px,7vw,120px)] text-white"
                         >
                             Personal
                         </motion.h2>
@@ -144,7 +138,7 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0.18)}
                             initial="hidden"
                             animate="visible"
-                            className="font-cormorant text-[clamp(50px,7vw,120px)] text-[#001F3F]"
+                            className="font-cormorant text-[clamp(70px,7vw,120px)] text-[#001F3F]"
                         >
                             Favorites.
                         </motion.h2>
@@ -155,7 +149,8 @@ export default function PersonalFavorites() {
                             animate="visible"
                             className="font-cormorant text-sm text-white/40 mt-5 max-w-[360px] hidden sm:block"
                         >
-                            A curated selection of high-performance vehicles that defines Jubril&apos;s personal standard for automotive excellence and innovation
+                            A curated selection of high-performance vehicles that defines
+                            Jubril&apos;s personal standard for automotive excellence and innovation
                         </motion.p>
                     </motion.div>
                 )}
@@ -213,28 +208,23 @@ function CarsFullscreen({
                     <div
                         key={car.slug}
                         className="h-full flex-shrink-0"
-                        style={{
-                            width: '90%',
-                        }}
+                        style={{ width: '90%' }}
                     >
                         <CarSlide car={car} isActive={i === activeIndex} />
                     </div>
                 ))}
             </div>
 
-            {/* NEXT CAR PREVIEW (10%) */}
             {activeIndex < CARS_DB.length - 1 && (
                 <div className="absolute right-0 top-0 h-full w-[10%] pointer-events-none">
-                    <CarSlide
-                        car={CARS_DB[activeIndex + 1]}
-                        isActive={false}
-                    />
+                    <CarSlide car={CARS_DB[activeIndex + 1]} isActive={false} />
                     <div className="absolute inset-0 bg-gradient-to-l from-black/70 to-transparent" />
                 </div>
             )}
         </div>
     );
 }
+
 // ─── CarSlide ─────────────────────────────────────────────────────────────────
 
 function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
@@ -252,7 +242,7 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                 alt={car.name}
                 fill
                 sizes="(max-width: 1024px) 90vw, 76vw"
-                className={`object-cover transition-[filter,transform] duration-700 ${hovered
+                className={`md:object-cover object-contain transition-[filter,transform] duration-700 ${hovered
                         ? 'brightness-[0.78] scale-[1.025]'
                         : isActive
                         ? 'brightness-[0.55]'
@@ -263,7 +253,6 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent z-[1]" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent z-[1]" />
 
-            {/* Hover icon */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.75 }}
                 animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.75 }}
@@ -273,7 +262,6 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                 <FiArrowUpRight size={16} />
             </motion.div>
 
-            {/* Active: car name + brand */}
             {isActive && (
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -290,7 +278,6 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                 </motion.div>
             )}
 
-            {/* Active: specs */}
             {isActive && (
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -306,7 +293,6 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                 </motion.div>
             )}
 
-            {/* Inactive: dim name */}
             {!isActive && (
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-10 px-4 pointer-events-none">
                     <p className="font-cormorant italic text-[clamp(18px,2vw,28px)] text-white/50 text-center leading-tight">
