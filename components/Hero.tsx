@@ -118,7 +118,7 @@ export default function HeroSection() {
                                 <div className="
     text-center md:text-start
     relative z-10 flex flex-col
-    pl-6 sm:pl-10 md:pl-[7vw] lg:pl-[10vw]
+    pl-0 sm:pl-10 md:pl-[7vw] lg:pl-[10vw]
     w-full md:w-[52%] lg:w-[48%]
     pb-[75vw] sm:pb-[20vw] md:pb-0
 ">
