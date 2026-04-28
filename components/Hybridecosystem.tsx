@@ -102,9 +102,9 @@ function CompanyRow({
                         {company.name}
                     </h3>
 
-                    <p className="font-cormorant font-light text-lg md:text-sm tracking-[0.01em] text-white/35 m-0 mb-4 leading-relaxed">
+                    <h4 className="font-cormorant font-light text-lg md:text-sm tracking-[0.01em] text-white/35 m-0 mb-4 leading-relaxed">
                         {company.tagline}
-                    </p>
+                    </h4>
                 </div>
 
                 <div className="flex-shrink-0 mt-1 text-white/25 transition-all duration-300 group-hover:text-white/70 group-hover:translate-x-1 group-hover:-translate-y-0.5">
