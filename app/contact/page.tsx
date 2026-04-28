@@ -274,7 +274,7 @@ function ContactForm({ onClose }: { onClose?: () => void }) {
                             <h3 className="font-cormorant text-3xl italic text-white mb-3">
                                 Message Received.
                             </h3>
-                            <h3 className="font-cormorant not-italic text-[9px] mb-6 tracking-[0.05em] uppercase text-white/25">
+                            <h3 className="font-cormorant not-italic text-lg mb-6 tracking-[0.05em] uppercase text-white/70">
                                 Jubril&apos;s has recieved your message and will be in touch soon.
                             </h3>
 
