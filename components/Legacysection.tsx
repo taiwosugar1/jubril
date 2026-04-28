@@ -170,9 +170,9 @@ export default function LegacySection() {
 
                 {/* Paragraphs */}
                 {[
-                    `Jubril Arogundade is on a quest that transcends the mere sale of automobiles; he is architecting the very future of how a continent moves. His passion for the industry is the engine behind a decade of transformation, positioning him as the definitive voice in Nigeria's EV revolution. When you speak of sustainable power and the automotive shift in Nigeria, his name is the one that resonates.`,
-                    `He understands that true leadership is about planting footprints in the sands of time that others can follow. His drive is fueled by a deep-seated belief that a wise man leaves an investment for his children, not just in wealth, but in a world that is better, cleaner, and more advanced than the one he found. He is building something his children will be proud to inherit`,
-                    `Hybrid Motors Nigeria serves as the ultimate expression of his vision, where he translates raw passion into the tangible infrastructure that will define the next century of African movement.`,
+                    `Jubril Arogundade is building more than an automotive business. He is helping shape the future of mobility across Africa, with a passion that has made him a respected voice in Nigeria’s EV revolution. When conversations turn to sustainable power and the future of mobility, his name stands out.`,
+                    `He believes true leadership is about leaving footprints in the sand for others to follow. His vision is driven by the belief that a good man leaves inheritance for his children, not only in wealth, but in a cleaner, more sustainable, and more advanced world than the one he found. He is building something his children will be proud to inherit.`,
+                    `Hybrid Group stands as the ultimate expression of that vision.`
                 ].map((text, i) => (
                     <motion.p
                         key={i}

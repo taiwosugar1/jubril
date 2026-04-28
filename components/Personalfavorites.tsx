@@ -143,15 +143,15 @@ export default function PersonalFavorites() {
                             Favorites.
                         </motion.h2>
 
-                        <motion.p
+                        <motion.h4
                             variants={fadeUp(0.28)}
                             initial="hidden"
                             animate="visible"
-                            className="font-cormorant leading-6.5 text-sm text-white/70 mt-5 max-w-[360px] block"
+                            className="font-cormorant leading-6.5 text-lg text-white/70 mt-5 max-w-[360px] block"
                         >
                             A curated selection of high-performance vehicles that defines
                             Jubril&apos;s personal standard for automotive excellence and innovation
-                        </motion.p>
+                        </motion.h4>
                     </motion.div>
                 )}
             </AnimatePresence>
