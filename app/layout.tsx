@@ -49,7 +49,7 @@ export const viewport: Viewport = {
   themeColor: "#0f172a",
 };
 
-const IS_DEV_MODE = process.env.NEXT_PUBLIC_DEV_MODE === "false";
+const IS_DEV_MODE = process.env.NEXT_PUBLIC_DEV_MODE === "true";
 
 export default function RootLayout({
   children,

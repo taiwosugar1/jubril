@@ -318,7 +318,7 @@ export default function DevModePage() {
 
                 {/* Description */}
                 <p className="description">
-                    Jubril Arogundade's official platform is being elevated to reflect the next chapter of African mobility. A new era in automotive leadership launches soon.
+                    Jubril Arogundade&apos;s official platform is being elevated to reflect the next chapter of African mobility. A new era in automotive leadership launches soon.
                 </p>
 
                 {/* Countdown */}

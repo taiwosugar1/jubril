@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { FiArrowUpRight, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import Link from 'next/link';
 import { CarData, CARS_DB } from '@/lib/cars';
+import { useRouter } from 'next/navigation';
 
 export default function PersonalFavorites() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -235,11 +236,15 @@ function CarsFullscreen({
 
 function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
     const [hovered, setHovered] = useState(false);
+    const router = useRouter()
+    const navigate = () => {
+        router.push(`/cars/${car.slug}`)
+    }
 
     return (
         <Link
             href={`/cars/${car.slug}`}
-            className=" hidden sm:block w-full h-full relative"
+            className=" block w-full h-full relative"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >
@@ -281,14 +286,14 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                     <h4 className="font-cormorant italic text-[clamp(25px,5vw,72px)] text-white mb-3">
                         {car.name}
                     </h4>
-                    <Link
-                        href={`/cars/${car.slug}`}
+                    <button
+                        onClick={navigate}
                         className=" head mt-3 px-3 py-2 text-white text-sm md:text-lg border text-center uppercase bg-black/20 hover:bg-white hover:text-black border-white rounded-xl"
                         onMouseEnter={() => setHovered(true)}
                         onMouseLeave={() => setHovered(false)}
                     >
                         View Details
-                    </Link>
+                    </button>
                 </motion.div>
             )}
 
