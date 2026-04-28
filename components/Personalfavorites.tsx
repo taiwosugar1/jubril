@@ -303,10 +303,10 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.25 }}
-                    className="absolute bottom-18 right-4 md:right-8 z-10 text-right"
+                    className="absolute bottom-18 right-2 md:right-8 z-10 text-right"
                 >
                     {car.specs?.map((spec) => (
-                        <p key={spec.label} className="mb-1 text-[10px] md:text[13px] text-white/40 uppercase">
+                        <p key={spec.label} className="mb-1 text-[9px] md:text[13px] text-white/40 uppercase">
                             {spec.value}
                         </p>
                     ))}
