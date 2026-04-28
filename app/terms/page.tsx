@@ -156,7 +156,7 @@ export default function TermsOfUse() {
                         initial={{ opacity: 0, y: 32 }}
                         animate={heroInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                        className="font-cormorant italic font-normal text-[clamp(52px,9vw,140px)] leading-[0.9] tracking-[-0.02em] text-white m-0"
+                        className="font-cormorant italic font-normal text-[clamp(62px,9vw,140px)] leading-[0.9] tracking-[-0.02em] text-white m-0"
                     >
                         Terms
                     </motion.h1>
@@ -165,7 +165,7 @@ export default function TermsOfUse() {
                         initial={{ opacity: 0, y: 32 }}
                         animate={heroInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.9, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                        className="font-cormorant not-italic font-light text-[clamp(52px,9vw,140px)] leading-[1.06] tracking-[-0.02em] text-white/18 m-0 mb-10"
+                        className="font-cormorant not-italic font-light text-[clamp(62px,9vw,140px)] leading-[1.06] tracking-[-0.02em] text-white/18 m-0 mb-10"
                     >
                         of Use.
                     </motion.h1>
