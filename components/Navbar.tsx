@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiX } from 'react-icons/hi';
 import Link from 'next/link';
@@ -24,10 +25,16 @@ const NAV_LINKS2 = [
     { label: 'Awards', href: '#recognition' },
 ];
 
+const SCROLL_KEY = 'navbar_pending_scroll';
+
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
+    const router = useRouter();
+    const pathname = usePathname();
+
+    /* ── scroll listener ── */
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 10);
         handleScroll();
@@ -35,14 +42,58 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    /* ── body lock when menu open ── */
     useEffect(() => {
         document.body.style.overflow = menuOpen ? 'hidden' : '';
         return () => { document.body.style.overflow = ''; };
     }, [menuOpen]);
 
+    /* ── on home mount: read pending hash and scroll to it ── */
+    useEffect(() => {
+        if (pathname !== '/') return;
+        const hash = sessionStorage.getItem(SCROLL_KEY);
+        if (!hash) return;
+        sessionStorage.removeItem(SCROLL_KEY);
+
+        // give the page a moment to fully render before scrolling
+        const t = setTimeout(() => {
+            const el = document.querySelector(hash);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 120);
+        return () => clearTimeout(t);
+    }, [pathname]);
+
+    /* ── nav-link click handler ── */
+    const handleNavClick = useCallback((href: string) => {
+        setMenuOpen(false);
+
+        // plain page link (e.g. /speaking)
+        if (!href.startsWith('#') && href !== '/') {
+            router.push(href);
+            return;
+        }
+
+        // home link
+        if (href === '/') {
+            router.push('/');
+            return;
+        }
+
+        // section anchor
+        if (pathname === '/') {
+            // already on home — just smooth-scroll
+            const el = document.querySelector(href);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            // store the target, navigate home — useEffect above will scroll
+            sessionStorage.setItem(SCROLL_KEY, href);
+            router.push('/');
+        }
+    }, [pathname, router]);
+
     return (
         <>
-            {/* NAVBAR */}
+            {/* NAVBAR — untouched ── */}
             <motion.nav
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -64,28 +115,28 @@ export default function Navbar() {
                     </div>
                 </Link>
 
-                    <ul className="hidden md:flex items-center gap-8 lg:gap-12">
-                        {NAV_LINKS.map((link) => (
-                            <li key={link.href}>
-                                <Link
-                                    href={link.href}
-                                    className="text-white/55 text-[9.5px] tracking-[0.22em] uppercase font-light hover:text-white/90 transition-colors duration-300"
-                                >
-                                    {link.label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                <ul className="hidden md:flex items-center gap-8 lg:gap-12">
+                    {NAV_LINKS.map((link) => (
+                        <li key={link.href}>
+                            <Link
+                                href={link.href}
+                                className="text-white/55 text-[9.5px] tracking-[0.22em] uppercase font-light hover:text-white/90 transition-colors duration-300"
+                            >
+                                {link.label}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
 
-                    <button
-                        onClick={() => setMenuOpen(true)}
-                        className="w-[44px] h-[44px] rounded-full bg-white flex items-center justify-center hover:bg-white/90 transition-all duration-300"
-                    >
-                        <MdMenu className="w-[17px] h-[17px] text-black" />
+                <button
+                    onClick={() => setMenuOpen(true)}
+                    className="w-[44px] h-[44px] rounded-full bg-white flex items-center justify-center hover:bg-white/90 transition-all duration-300"
+                >
+                    <MdMenu className="w-[17px] h-[17px] text-black" />
                 </button>
             </motion.nav>
 
-            {/* OVERLAY MENU */}
+            {/* OVERLAY MENU — untouched except Link → button ── */}
             <AnimatePresence>
                 {menuOpen && (
                     <motion.div
@@ -108,7 +159,6 @@ export default function Navbar() {
                                     />
                                 </div>
                             </Link>
-
                             <button
                                 onClick={() => setMenuOpen(false)}
                                 className="w-[44px] h-[44px] rounded-full bg-white flex items-center justify-center"
@@ -126,16 +176,10 @@ export default function Navbar() {
                                         initial={{ opacity: 0, y: 24 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: 14 }}
-                                        transition={{
-                                            delay: i * 0.06 + 0.08,
-                                            duration: 0.5,
-                                        }}
+                                        transition={{ delay: i * 0.06 + 0.08, duration: 0.5 }}
                                     >
-                                        <Link
-                                            href={link.href}
-                                            onClick={() => setMenuOpen(false)}
-
-                                        >
+                                        {/* button instead of Link so we control navigation */}
+                                        <button onClick={() => handleNavClick(link.href)}>
                                             <h3 className="
                                                 font-cormorant italic font-normal
                                                 text-[clamp(25px,3vw,54px)]
@@ -144,24 +188,23 @@ export default function Navbar() {
                                                 transition-colors duration-300
                                                 block text-center
                                             ">
-                                            {link.label}
+                                                {link.label}
                                             </h3>
-                                        </Link>
+                                        </button>
                                     </motion.div>
                                 ))}
                             </div>
 
-                            {/* FOOTER (SCROLLS WITH CONTENT) */}
+                            {/* FOOTER */}
                             <div className="px-6 md:px-10 pb-10">
                                 <div className="h-px w-full bg-white/[0.08] mb-5" />
                                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
                                     <p className="font-cormorant font-light text-[10px] tracking-[0.28em] uppercase text-white/30 text-center sm:text-left">
                                         © {new Date().getFullYear()} Jubril Arogundade
                                     </p>
-
                                     <div className="flex items-center gap-6 md:gap-8">
-                                        <a
-                                            href="https://www.instagram.com/jubriloflagos/"
+
+                                        <a href="https://www.instagram.com/jubriloflagos/"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="font-cormorant font-light text-[10px] tracking-[0.28em] uppercase text-white/30 hover:text-white/70 transition-colors duration-300"
@@ -169,6 +212,7 @@ export default function Navbar() {
                                             Instagram
                                         </a>
                                         <a
+
                                             href="https://ng.linkedin.com/in/jubril-arogundade-68389b182"
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -184,26 +228,5 @@ export default function Navbar() {
                 )}
             </AnimatePresence>
         </>
-    );
-}
-
-function JLMonogram() {
-    return (
-        <svg viewBox="0 0 32 32" width="26" height="26" fill="none">
-            <circle cx="16" cy="16" r="13" stroke="white" strokeOpacity="0.15" strokeWidth="0.5" />
-            <text
-                x="16"
-                y="22"
-                textAnchor="middle"
-                fill="white"
-                fontFamily="'Cormorant Garamond', serif"
-                fontSize="15"
-                fontStyle="italic"
-                fontWeight="600"
-                letterSpacing="-1"
-            >
-                JL
-            </text>
-        </svg>
     );
 }

@@ -45,7 +45,7 @@ export default function LegacySection() {
                 <div className="
                     relative
                     w-full lg:w-full
-                    h-[60vw] max-h-[56vh]
+                    md:h-[60vw] h-[70vh] md:max-h-[56vh]
                     lg:aspect-[9/11] lg:h-auto lg:max-h-[82vh]
                 ">
                     {/* Video container */}
