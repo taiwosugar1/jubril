@@ -9,10 +9,10 @@ import { MdMenu } from 'react-icons/md';
 import Image from 'next/image';
 
 const NAV_LINKS = [
-    { label: 'CONTACT', href: '/contact' },
     { label: 'SPEAKING INQUIRIES', href: '/speaking' },
     { label: 'BRAND SPOKESPERSON', href: '/press' },
     { label: 'STRATEGIC CONSULTATION', href: '/consulting' },
+    { label: 'CONTACT', href: '/contact' },
 ];
 
 const NAV_LINKS2 = [
