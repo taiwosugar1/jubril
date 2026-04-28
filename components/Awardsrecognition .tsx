@@ -160,7 +160,7 @@ export default function AwardsRecognition() {
                     initial={{ opacity: 0 }}
                     animate={inView ? { opacity: 1 } : {}}
                     transition={{ duration: 0.9 }}
-                    className="font-serif uppercase tracking-[0.36em]
+                    className="font-[Montserrat] uppercase tracking-[0.36em]
                      text-[clamp(11px,0.9vw,12px)]
                      text-[#1c2e4a]/40
                      mb-[clamp(16px,2.5vh,24px)]"
