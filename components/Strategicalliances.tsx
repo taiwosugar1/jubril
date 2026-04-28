@@ -99,7 +99,7 @@ export default function StrategicAlliances() {
                     variants={fadeIn}
                     initial="hidden"
                     animate={inView ? 'visible' : 'hidden'}
-                    className="text-center mb-[clamp(20px,3vh,36px)] text-[clamp(11px,1vw,12px)] tracking-[0.38em] uppercase text-white/40 font-[Cormorant_Garamond,Georgia,serif]"
+                    className="text-center mb-[clamp(20px,3vh,36px)] text-[clamp(11px,1vw,12px)] tracking-[0.38em] uppercase text-white/60 font-[Cormorant_Garamond,Georgia,serif]"
                 >
                     The Network
                 </motion.p>

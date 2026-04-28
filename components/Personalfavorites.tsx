@@ -147,7 +147,7 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0.28)}
                             initial="hidden"
                             animate="visible"
-                            className="font-cormorant text-sm text-white/40 mt-5 max-w-[360px] hidden sm:block"
+                            className="font-cormorant text-sm text-white/60 mt-5 max-w-[360px] hidden sm:block"
                         >
                             A curated selection of high-performance vehicles that defines
                             Jubril&apos;s personal standard for automotive excellence and innovation

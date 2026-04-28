@@ -102,7 +102,7 @@ function CompanyRow({
                         {company.name}
                     </h3>
 
-                    <h4 className="font-cormorant font-light text-lg md:text-sm tracking-[0.01em] text-white/35 m-0 mb-4 leading-relaxed">
+                    <h4 className="font-cormorant font-light text-lg md:text-sm tracking-[0.01em] text-white/60 m-0 mb-4 leading-relaxed">
                         {company.tagline}
                     </h4>
                 </div>
@@ -195,7 +195,7 @@ export default function HybridEcosystem() {
                 {/* LEFT (UNCHANGED UI) */}
                 <div className="px-[clamp(24px,6vw,80px)] lg:border-r border-white/[0.07] pb-16 lg:pb-0">
                     <FadeUp delay={0}>
-                        <p className="font-cormorant font-normal text-[10px] tracking-[0.36em] uppercase text-white/36 mb-8">
+                        <p className="font-cormorant font-normal text-[10px] tracking-[0.36em] uppercase text-white/60 mb-8">
                             The Footprint
                         </p>
                     </FadeUp>
@@ -210,7 +210,7 @@ export default function HybridEcosystem() {
                     </FadeUp>
 
                     <FadeUp delay={0.22} className="mt-[clamp(28px,4vh,48px)]">
-                        <p className="font-cormorant italic font-light text-[clamp(16px,1.4vw,18px)] leading-[1.72] text-white/48 m-0 mb-5">
+                        <p className="font-cormorant italic font-light text-[clamp(16px,1.4vw,18px)] leading-[1.72] text-white/60 m-0 mb-5">
                             More than a collection of companies...
                         </p>
                     </FadeUp>
