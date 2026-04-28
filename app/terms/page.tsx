@@ -135,14 +135,14 @@ export default function TermsOfUse() {
                 {/* Watermark */}
                 <div
                     aria-hidden
-                    className="absolute inset-0 overflow-hidden pointer-events-none select-none flex items-end"
+                    className="absolute inset-0 overflow-hidden pointer-events-none select-none flex items-center justify-center"
                 >
-                    <h3 className="font-cormorant font-black not-italic text-[22vw] leading-none tracking-[0.04em] text-white/[0.025] whitespace-nowrap translate-y-[18%]">
+                    <h3 className="font-cormorant font-black not-italic text-[22vw] leading-none tracking-[0.04em] text-white/[0.025] whitespace-nowrap">
                         TERMS
                     </h3>
                 </div>
 
-                <div className="relative z-10 max-w-[1400px] mx-auto">
+                <div className="relative z-10 max-w-[1400px] mx-auto text-center">
                     <motion.h3
                         initial={{ opacity: 0, y: 16 }}
                         animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -151,6 +151,7 @@ export default function TermsOfUse() {
                     >
                         Legal
                     </motion.h3>
+
                     <motion.h1
                         initial={{ opacity: 0, y: 32 }}
                         animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -159,6 +160,7 @@ export default function TermsOfUse() {
                     >
                         Terms
                     </motion.h1>
+
                     <motion.h1
                         initial={{ opacity: 0, y: 32 }}
                         animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -167,16 +169,19 @@ export default function TermsOfUse() {
                     >
                         of Use.
                     </motion.h1>
+
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={heroInView ? { opacity: 1 } : {}}
                         transition={{ duration: 0.8, delay: 0.38 }}
-                        className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8"
+                        className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-3 sm:gap-8"
                     >
                         <h4 className="font-cormorant not-italic font-light text-[11px] tracking-[0.28em] uppercase text-white/25">
                             Last updated — {LAST_UPDATED}
                         </h4>
+
                         <span className="hidden sm:block w-px h-4 bg-white/15" />
+
                         <h4 className="font-cormorant not-italic font-light text-[11px] tracking-[0.28em] uppercase text-white/25">
                             {SITE_URL}
                         </h4>
