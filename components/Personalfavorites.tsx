@@ -239,7 +239,7 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
     return (
         <Link
             href={`/cars/${car.slug}`}
-            className="block w-full h-full relative"
+            className=" hidden sm:block w-full h-full relative"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
         >

@@ -61,7 +61,7 @@ function MentorCard({
                     alt={mentor.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                    className="object-cover object-top grayscale brightness-[0.88] transition-all duration-500 ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
+                    className="object-cover object-top brightness-[0.88] transition-all duration-500 ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
                 />
             </div>
 
