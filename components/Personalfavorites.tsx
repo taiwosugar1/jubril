@@ -212,7 +212,7 @@ function CarsFullscreen({
             <div
                 className="flex h-full"
                 style={{
-                    transform: `translateX(-${activeIndex * 75}%)`,
+                    transform: `translateX(-${activeIndex * 80}%)`,
                     transition: 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
             >
@@ -220,7 +220,7 @@ function CarsFullscreen({
                     <div
                         key={car.slug}
                         className="h-full flex-shrink-0"
-                        style={{ width: '75%' }}
+                        style={{ width: '80%' }}
                     >
                         <CarSlide car={car} isActive={i === activeIndex} />
                     </div>
@@ -228,7 +228,7 @@ function CarsFullscreen({
             </div>
 
             {activeIndex < CARS_DB.length - 1 && (
-                <div className="absolute right-0 top-0 h-full w-[25%] pointer-events-none hidden md:block">
+                <div className="absolute right-0 top-0 h-full w-[20%] pointer-events-none hidden md:block">
                     <CarSlide car={CARS_DB[activeIndex + 1]} isActive={false} />
                     <div className="absolute inset-0 bg-gradient-to-l from-black/70 to-transparent" />
                 </div>
