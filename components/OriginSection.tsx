@@ -32,7 +32,7 @@ const OriginSection = () => {
                         letterSpacing: '0.06em',
                         lineHeight: 1.8,
                     }}
-                        className="space-y-8 text-[#F5F2ED] leading-relaxed max-w-xl head italic text-[16px] md:text-[20px] font-light">
+                        className="space-y-8 text-[#F5F2ED] leading-relaxed max-w-xl head italic text-[16px] md:text-[18px] font-light">
                         <p>
                             <span className="text-white font-medium">Jubril Arogundade</span> is the embodiment of the  &quot;Jubril of Lagos&quot; identity, a title he wears as a badge of honor and a testament to his personal grit. For Jubril, Lagos was more than a hometown: it was his first masterclass in leadership, resilience, and the art of the possible.
                         </p>
