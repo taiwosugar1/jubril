@@ -21,7 +21,7 @@ export default function MarqueeRow({
     }, []);
 
     // 🔥 Speed adjustment
-    const adjustedDuration = isMobile ? duration * 15 : duration;
+    const adjustedDuration = isMobile ? duration * 0.15 : duration;
     // (lower = faster)
 
     const repeated = Array(8).fill(word).join('          ');
