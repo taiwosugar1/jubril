@@ -306,7 +306,7 @@ export default function PressPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-[clamp(40px,6vw,100px)] items-start">
                     {/* Left */}
                     <div>
-                        <div className="absolute left-8 top-23">
+                        <div className="absolute z-10 left-6 md:left-8 top-23">
                             <BackButton />
                         </div>
                         <motion.h1

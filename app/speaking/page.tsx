@@ -52,7 +52,7 @@ export default function SpeakingInquiry() {
     return (
         <>
             {/* ── HERO ── */}
-            <div className="absolute top-23 left-8 z-10">
+            <div className="absolute top-23 left-6 md:left-8 z-10">
                 <BackButton />
             </div>
             <section

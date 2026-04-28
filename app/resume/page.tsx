@@ -3,7 +3,6 @@
 import { useRef, useState } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
-import ClosingNavbar from '@/components/BarkButton';
 import BackButton from '@/components/BarkButton';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -542,7 +541,7 @@ function CTAStrip() {
 export default function ResumeAndImpactPage() {
     return (
         <div className="bg-black min-h-screen">
-            <div className="absolute left-8 top-20 z-10">
+            <div className="absolute left-6 md:left-8 top-20 z-10">
                 <BackButton />
             </div>
             <Hero />

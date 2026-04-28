@@ -362,7 +362,7 @@ export default function ContactPage({ onClose }: ContactPageProps) {
     return (
         <>
             <div>
-                <div className=" absolute z-10 top-23 left-8">
+                <div className=" absolute z-10 top-23 left-6 md:left-8">
                 <BackButton />
                 </div>
                 {/* ✕ Close */}
