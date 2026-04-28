@@ -334,11 +334,9 @@ export default function CarDetailPage({ car: carProp, slug }: CarDetailPageProps
               href={car.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-cormorant font-bold not-italic sm:hidden inline-block text-[10px] tracking-[0.28em] border border-white uppercase text-white group-hover:bg-white group-hover:text-black px-4 py-2 mb-3 md:mb-8 "
+              className="head rounded-xl font-bold not-italic sm:hidden inline-block text-[10px] tracking-[0.28em] border border-white/50 uppercase text-white group-hover:bg-white group-hover:text-black px-4 py-2 mb-3 md:mb-8 "
             >
-              <h5               >
-                BUY NOW
-              </h5>
+              BUY NOW
             </a>
           </motion.div>
 
