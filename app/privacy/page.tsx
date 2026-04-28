@@ -90,13 +90,13 @@ function SectionBlock({
                 </span>
             </div>
             <div>
-                <h3 className="font-cormorant italic font-normal text-[clamp(20px,2.8vw,32px)] leading-tight tracking-[-0.01em] text-white/90 mb-5">
+                <h3 className="font-cormorant italic font-normal text-[clamp(23px,2.8vw,32px)] leading-tight tracking-[-0.01em] text-white/90 mb-5">
                     {section.title}
                 </h3>
                 {section.body.split('\n\n').map((para, i) => (
                     <h4
                         key={i}
-                        className="font-cormorant not-italic font-light text-base lg:text-[1.05rem] leading-[1.82] text-white/48 mb-4 last:mb-0"
+                        className="font-cormorant not-italic font-light text-lg leading-[1.82] text-white/48 mb-4 last:mb-0"
                     >
                         {para}
                     </h4>
