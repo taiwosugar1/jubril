@@ -123,7 +123,7 @@ export default function TermsOfUse() {
         <main className="relative w-full min-h-screen bg-[#000C1A] text-[#F5F2ED] overflow-x-hidden">
 
             {/* ── Back nav ── */}
-            <div className="absolute top-23 left-8">
+            <div className="absolute z-10 top-23 left-8">
                 <BackButton />
             </div>
 
