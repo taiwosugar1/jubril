@@ -115,9 +115,9 @@ function AllureTab({ car }: { car: CarData }) {
       </p>
 
       {/* Large italic pull-quote */}
-      <p className="font-cormorant italic font-normal text-[clamp(16px,2.2vw,26px)] leading-[1.6] text-white/85 max-w-[600px] mb-6">
+      <h3 className="font-cormorant italic font-normal text-[clamp(16px,2.2vw,26px)] leading-[1.6] text-white/85 max-w-[600px] mb-6">
         {car.allure.whyIDriveThis}
-      </p>
+      </h3>
 
       {/* Body paragraph */}
       <p className=" font-light text-[clamp(14px,1.4vw,17px)] leading-[1.9] text-white/85 max-w-[580px]">
