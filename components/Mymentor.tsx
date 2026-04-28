@@ -67,7 +67,7 @@ function MentorCard({
 
             {/* Text */}
             <div className="pt-5 md:pt-10 mb-8 md:mb-0">
-                <p className="font-serif italic text-[clamp(18px,2.2vw,26px)] leading-tight text-[#1c2e4a] mb-1">
+                <p className="font-serif italic text-[clamp(18px,2.2vw,26px)] leading-tight text-[#001F3F] mb-1">
                     {mentor.name}
                 </p>
 

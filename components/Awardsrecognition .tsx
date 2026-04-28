@@ -183,7 +183,7 @@ export default function AwardsRecognition() {
                     <h2 className="font-serif not-italic font-medium
                          text-[clamp(52px,9.5vw,132px)]
                          leading-[1.05]
-                         text-[001F3F]">
+                         text-[#001F3F]">
                         Recognition.
                     </h2>
                 </motion.div>

@@ -147,7 +147,7 @@ export default function PersonalFavorites() {
                             variants={fadeUp(0.28)}
                             initial="hidden"
                             animate="visible"
-                            className="font-cormorant text-sm text-white/40 mt-5 max-w-[360px] hidden sm:block"
+                            className="font-cormorant text-sm text-white/70 mt-5 max-w-[360px] block"
                         >
                             A curated selection of high-performance vehicles that defines
                             Jubril&apos;s personal standard for automotive excellence and innovation
@@ -278,9 +278,20 @@ function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
                     <span className="text-[9px] md:text-10px uppercase tracking-[0.28em] text-white/85 bg-[#001F3F]/85 px-2 md:px-3 py-1.5">
                         {car.brand}
                     </span>
-                    <h4 className="font-cormorant italic text-[clamp(25px,5vw,72px)] text-white">
+                    <h4 className="font-cormorant italic text-[clamp(25px,5vw,72px)] text-white mb-3">
                         {car.name}
                     </h4>
+                    <Link
+                        href={`/cars/${car.slug}`}
+
+                        onMouseEnter={() => setHovered(true)}
+                        onMouseLeave={() => setHovered(false)}
+                    >
+                        <h4
+                            className="mt-3 px-3 py-2 text-white border text-center uppercase bg-black/20 hover:bg-white hover:text-black border-white rounded-xl">
+                            View Details
+                        </h4>
+                    </Link>
                 </motion.div>
             )}
 

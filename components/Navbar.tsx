@@ -161,7 +161,7 @@ export default function Navbar() {
 
                                     <div className="flex items-center gap-6 md:gap-8">
                                         <a
-                                            href="https://instagram.com/"
+                                            href="https://www.instagram.com/jubriloflagos/"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="font-cormorant font-light text-[10px] tracking-[0.28em] uppercase text-white/30 hover:text-white/70 transition-colors duration-300"
@@ -169,7 +169,7 @@ export default function Navbar() {
                                             Instagram
                                         </a>
                                         <a
-                                            href="https://linkedin.com/in/"
+                                            href="https://ng.linkedin.com/in/jubril-arogundade-68389b182"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="font-cormorant font-light text-[10px] tracking-[0.28em] uppercase text-white/30 hover:text-white/70 transition-colors duration-300"

@@ -221,12 +221,12 @@ function PaletteTab({ car }: { car: CarData }) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="flex flex-wrap gap-10"
+      className="flex justify-center flex-wrap gap-10"
     >
       {car.colors.map((color, i) => (
         <div key={i} className="flex flex-col items-center gap-4">
           <div
-            className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full transition-transform duration-300 hover:scale-105"
+            className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] border border-white/5 rounded-full transition-transform duration-300 hover:scale-105"
             style={{
               background: color.hex,
               boxShadow: `0 8px 32px ${color.hex}55, inset 0 1px 0 rgba(255,255,255,0.08)`,
@@ -310,7 +310,7 @@ export default function CarDetailPage({ car: carProp, slug }: CarDetailPageProps
               fill
               priority
               sizes="100vw"
-              className="object-cover brightness-[0.45]"
+              className="md:object-cover object-contain brightness-[0.45]"
             />
           </motion.div>
 
@@ -325,18 +325,28 @@ export default function CarDetailPage({ car: carProp, slug }: CarDetailPageProps
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute bottom-[calc(10vh+90px)] left-7 sm:left-10 lg:left-14 z-10"
+            className="flex gap-3 absolute bottom-[calc(10vh+90px)] left-7 sm:left-10 lg:left-14 z-10"
           >
-            <span className="font-cormorant not-italic font-normal text-[10px] tracking-[0.28em] uppercase text-white bg-[#1b3a6b] px-4 py-2 mb-8 inline-block">
+            <span className="font-cormorant not-italic font-normal text-[10px] tracking-[0.28em] uppercase text-white bg-[#1b3a6b] px-4 py-2 mb-3 md:mb-8 inline-block">
               {car.brand}
             </span>
+            <a
+              href={car.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-cormorant font-bold not-italic sm:hidden inline-block text-[10px] tracking-[0.28em] border border-white uppercase text-white group-hover:bg-white group-hover:text-black px-4 py-2 mb-3 md:mb-8 "
+            >
+              <h5               >
+                BUY NOW
+              </h5>
+            </a>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute bottom-[10vh] left-4 sm:left-8 lg:left-12 z-10"
+            className="absolute bottom-[13vh] md:bottom-[10vh] left-4 sm:left-8 lg:left-12 z-10"
           >
             <h1 className="font-cormorant italic font-normal text-[clamp(52px,10vw,130px)] leading-none tracking-[-0.01em] text-white">
               {car.name}
