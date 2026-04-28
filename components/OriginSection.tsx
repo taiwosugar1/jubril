@@ -61,7 +61,7 @@ const OriginSection = () => {
 
                     {/* North Star Panel */}
                     <div className="border border-zinc-900 max-w-xl rounded-sm p-6 md:p-8 bg-zinc-900/20 backdrop-blur-sm">
-                        <h4 className="text-xs uppercase tracking-[0.2em] text-zinc-400 font-sans mb-3">
+                        <h4 className="text-sm uppercase tracking-[0.2em] text-zinc-400 font-sans mb-3">
                             Jubril&apos;s North Star
                         </h4>
                         <p className=" mb-5 font-serif text-xl talic leading-snug text-[#F5F2ED]">
@@ -69,7 +69,7 @@ const OriginSection = () => {
                         </p>
 
                         {/* North Code */}
-                        <h4 className="text-xs uppercase tracking-[0.2em] text-zinc-400 font-sans mb-3">
+                        <h4 className="text-sm uppercase tracking-[0.2em] text-zinc-400 font-sans mb-3">
                             Jubril&apos;s Code
                         </h4>
                         <p className="font-serif mb-5 text-xl talic leading-snug text-[#F5F2ED]">
@@ -77,7 +77,7 @@ const OriginSection = () => {
                         </p>
 
                         {/* North Drive */}
-                        <h4 className="text-xs uppercase tracking-[0.2em] text-zinc-400 font-sans mb-3">
+                        <h4 className="text-sm uppercase tracking-[0.2em] text-zinc-400 font-sans mb-3">
                             Jubril&apos;s Drive
                         </h4>
                         <p className="font-serif text-xl talic leading-snug text-[#F5F2ED]">
@@ -97,25 +97,25 @@ const OriginSection = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <h5 className="text-xl font-serif italic text-[#F5F2ED] mb-2">Excellence</h5>
-                            <p className="text-xs text-zinc-400 uppercase tracking-wide leading-relaxed">
+                            <p className="text-sm text-zinc-400 uppercase tracking-wide leading-relaxed">
                                 Uncompromising standards in every detail.
                             </p>
                         </div>
                         <div>
                             <h5 className="text-xl font-serif italic text-zinc-200 mb-2">Innovation</h5>
-                            <p className="text-xs text-zinc-400 uppercase tracking-wide leading-relaxed">
+                            <p className="text-sm text-zinc-400 uppercase tracking-wide leading-relaxed">
                                 Pioneering the future of African mobility.
                             </p>
                         </div>
                         <div>
                             <h5 className="text-xl font-serif italic text-[#F5F2ED] mb-2">Integrity</h5>
-                            <p className="text-xs text-zinc-400 uppercase tracking-wide leading-relaxed">
+                            <p className="text-sm text-zinc-400 uppercase tracking-wide leading-relaxed">
                                 Building trust through transparent leadership.
                             </p>
                         </div>
                         <div>
                             <h5 className="text-xl font-serif italic text-[#F5F2ED] mb-2">Impact</h5>
-                            <p className="text-xs text-zinc-400 uppercase tracking-wide leading-relaxed">
+                            <p className="text-sm text-zinc-400 uppercase tracking-wide leading-relaxed">
                                 Creating value for the continent and its people.
                             </p>
                         </div>
