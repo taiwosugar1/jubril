@@ -202,11 +202,10 @@ function CarsFullscreen({
 
     return (
         <div className="relative w-full h-full overflow-hidden">
-            {/* Sliding strip — instant CSS transform, no JS delay */}
             <div
                 className="flex h-full"
                 style={{
-                    transform: `translateX(-${activeIndex * 85}%)`,
+                    transform: `translateX(-${activeIndex * 90}%)`,
                     transition: 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
             >
@@ -214,24 +213,28 @@ function CarsFullscreen({
                     <div
                         key={car.slug}
                         className="h-full flex-shrink-0"
-                        style={{ width: '85%' }}
+                        style={{
+                            width: '90%',
+                        }}
                     >
                         <CarSlide car={car} isActive={i === activeIndex} />
                     </div>
                 ))}
             </div>
 
-            {/* Peek strip for next car */}
+            {/* NEXT CAR PREVIEW (10%) */}
             {activeIndex < CARS_DB.length - 1 && (
-                <div className="absolute right-0 top-0 h-full w-[15%] pointer-events-none">
-                    <CarSlide car={CARS_DB[activeIndex + 1]} isActive={false} />
+                <div className="absolute right-0 top-0 h-full w-[10%] pointer-events-none">
+                    <CarSlide
+                        car={CARS_DB[activeIndex + 1]}
+                        isActive={false}
+                    />
                     <div className="absolute inset-0 bg-gradient-to-l from-black/70 to-transparent" />
                 </div>
             )}
         </div>
     );
 }
-
 // ─── CarSlide ─────────────────────────────────────────────────────────────────
 
 function CarSlide({ car, isActive }: { car: CarData; isActive: boolean }) {
